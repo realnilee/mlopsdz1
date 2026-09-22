@@ -1,21 +1,21 @@
 {
-  "version": "v1",
-  "examples": 9061,
+  "version": "v2",
+  "examples": 10556,
   "system_prompts": 5,
   "groups": 57,
-  "largest_group": "clinical_knowledge",
-  "largest_group_share": 0.0221,
+  "largest_group": "professional_law",
+  "largest_group_share": 0.0351,
   "answer_len": {
     "p10": 16,
     "p50": 33,
-    "p90": 103,
-    "ratio_p90_p10": 6.44,
-    "cv": 0.914,
+    "p90": 104,
+    "ratio_p90_p10": 6.5,
+    "cv": 0.918,
     "min": 12,
-    "max": 617
+    "max": 647
   },
-  "same_length_share": 0.0377,
-  "duplicate_answer_share": 0.0914,
+  "same_length_share": 0.0412,
+  "duplicate_answer_share": 0.099,
   "thresholds": {
     "min_examples": 1000,
     "min_system_prompts": 3,
@@ -27,5 +27,5 @@
   },
   "violations": [],
   "passed": true,
-  "seconds": 0.34
+  "seconds": 0.4
 }

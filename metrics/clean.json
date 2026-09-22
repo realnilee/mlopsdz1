@@ -1,10 +1,10 @@
 {
-  "version": "v1",
-  "rows_in": 9145,
-  "rows_out": 9061,
+  "version": "v2",
+  "rows_in": 10660,
+  "rows_out": 10556,
   "dropped_length": 5,
-  "dropped_exact_dup": 58,
-  "dropped_near_dup": 21,
+  "dropped_exact_dup": 73,
+  "dropped_near_dup": 26,
   "pii_rows_masked": 0,
   "pii_hits": {
     "phone": 0,
@@ -13,16 +13,16 @@
   },
   "groups": 57,
   "user_chars": {
-    "p50": 284,
-    "p90": 844,
+    "p50": 291,
+    "p90": 902,
     "p99": 2125,
     "max": 3711
   },
   "assistant_chars": {
     "p50": 33,
-    "p90": 103,
+    "p90": 104,
     "p99": 225,
-    "max": 617
+    "max": 647
   },
-  "seconds": 3.83
+  "seconds": 4.72
 }

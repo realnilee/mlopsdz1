@@ -1,14 +1,14 @@
 {
-  "version": "v1",
-  "files": 1,
-  "rows_scanned": 14042,
-  "rows_written": 9145,
+  "version": "v2",
+  "files": 2,
+  "rows_scanned": 15573,
+  "rows_written": 10660,
   "dropped_topic_filter": 0,
   "dropped_bad_choices": 0,
   "dropped_topic_cap": 4840,
-  "dropped_duplicate_id": 57,
+  "dropped_duplicate_id": 73,
   "max_per_topic": 200,
   "topics_filter": 0,
   "system_prompt_variants": 5,
-  "seconds": 0.16
+  "seconds": 0.18
 }
