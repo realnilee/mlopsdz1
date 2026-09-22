@@ -1,0 +1,113 @@
+# Единственная точка конфигурации ДЗ 3.
+# Ни один путь, порог или размер среза не должен появляться в коде строкой.
+
+collect:
+  # Источник: MMLU (cais/mmlu, MIT) — тестовые вопросы с вариантами ответа
+  # по 57 предметам. Версия датасета переключается ЗДЕСЬ. Всё остальное — следствие.
+  version: "v1"              # v1 | v2
+  max_per_topic: 200         # строк на ТЕМУ из ОДНОГО файла-источника (после фильтров).
+                             # Без кэпа professional_law даёт 10.9% набора — выше
+                             # diversity.max_group_share. Кэп — намеренная балансировка,
+                             # а не подгонка: при 200/тему максимум получается ~2.2%.
+  sources:
+    v1:
+      - "../../datasets/mmlu/test/0000.parquet"
+    v2:
+      - "../../datasets/mmlu/test/0000.parquet"
+      - "../../datasets/mmlu/validation/0000.parquet"
+
+  # --- Переработка источника (см. docs/datasheet.md) ---
+  # Чужой готовый набор — это сырьё, а не сдача (см. README, «Готовый датасет
+  # как источник»). Три действия ниже — то, чем этот датасет отличается от
+  # «скачал parquet и переименовал в raw.jsonl». Каждое отражено числом
+  # в metrics/collect.json.
+
+  topics: null               # null — все 57 тем источника;
+                             # список тем — сузить набор до своей предметной области.
+                             # Сужение — законная переработка, но следите за
+                             # diversity.min_groups: одна тема не датасет.
+
+  # 1. Балансировка (max_per_topic выше) — иначе professional_law доминирует.
+  # 2. Переразметка: исходная строка MMLU — table row (question/choices/answer),
+  #    не диалог. collect.py собирает её в chat-формат: вопрос с пронумерованными
+  #    вариантами — в user, «буква + текст верного варианта» — в assistant.
+  # 3. Обогащение — вариант инструкции ниже.
+
+  system_prompts:            # В источнике инструкции нет вовсе — это table QA,
+                             # не chat. Инструкция для chat-формата написана заново
+                             # и сразу разведена на варианты: модель, обученная на
+                             # одной формулировке, заучивает её как константу.
+                             # Вариант выбирается детерминированно по id примера.
+    - "You are taking a multiple-choice exam. Read the question and the lettered options, then answer with exactly one letter and the text of that option — no explanation."
+    - "Below is an exam question with answer choices labeled A-D. Pick the single correct option and reply with its letter and text only. Do not explain your reasoning."
+    - "Task: choose the one correct answer to the question. Options are labeled A through D. Respond with only the letter and the option text."
+    - "You are a test-taking assistant. Given a question and lettered choices, name the one correct choice: its letter first, then its text. No commentary."
+    - "Answer the exam question below. Exactly one of the labeled options (A-D) is correct. Output only its letter and text."
+
+clean:
+  # Фильтр длин: слишком короткий пример — обрезок, слишком длинный — выброс.
+  min_user_chars: 30
+  max_user_chars: 4000
+  min_assistant_chars: 2
+  near_dup:
+    enabled: true
+    shingle_words: 4         # длина словного шингла
+    num_perm: 64             # перестановок MinHash: точность против скорости
+    threshold: 0.85          # Жаккар выше порога — почти-дубль
+  pii:
+    enabled: true            # стадия обязательна, даже если счётчик нулевой
+
+diversity:
+  # Пороги, которым обязан удовлетворять ОЧИЩЕННЫЙ датасет. Стадия diversity
+  # падает, если нарушен хоть один: набор из 30 однотипных строк проходит
+  # и схему, и дедупликацию, и сплит — формально он безупречен и бесполезен.
+  # Разбор такого случая: один системный промпт на все строки, ответы длиной
+  # 356–440 символов, сквозные слова во всех ответах. Лосс на нём падает,
+  # а модель выучивает шаблон вместо задачи.
+  #
+  # Пороги — не догма: их можно менять под свою задачу, но только в эту сторону
+  # и только с обоснованием в docs/datasheet.md. «Снизил, чтобы позеленело» —
+  # не обоснование.
+
+  min_examples: 1000         # строк после очистки. Меньше — модель увидит
+                             # каждый пример по нескольку раз за эпоху.
+  min_system_prompts: 3      # различных системных промптов
+  min_groups: 50             # различных групп (split.group_key)
+  max_group_share: 0.10      # доля крупнейшей группы: одна тема не должна
+                             # решать за весь датасет
+  min_answer_len_ratio: 1.6  # p90/p10 длин ответа ассистента. Ответы одной
+                             # длины — верный признак сгенерированного шаблона.
+                             # Если у вашей задачи ответы законно однотипные
+                             # (метки классов, да/нет) — снижайте порог и
+                             # покажите разнообразие на другой оси в datasheet.
+  max_same_length_share: 0.25   # доля примеров с самой частой длиной ответа
+  max_duplicate_answer_share: 0.30  # доля ответов-повторов (точные совпадения)
+
+split:
+  # Группа сплита. Вопросы одной темы не должны разъезжаться по train/test:
+  # текст темы дословно входит в промпт, а вопросы внутри темы — парафразы.
+  group_key: "topic"
+  ratios:
+    train: 0.8
+    val: 0.1
+    test: 0.1
+  seed: 42
+
+contamination:
+  # Порог поиска near-dup пересечений train/test.
+  # Обязан совпадать с clean.near_dup.threshold. Более строгий порог здесь
+  # ловил бы не контаминацию, а разницу порогов: пары с Жаккаром между
+  # порогом чистки и порогом проверки очистку проходят законно.
+  threshold: 0.85
+
+paths:
+  raw: "data/raw.jsonl"
+  clean: "data/clean.jsonl"
+  train: "data/train.jsonl"
+  val: "data/val.jsonl"
+  test: "data/test.jsonl"
+  metrics_collect: "metrics/collect.json"
+  metrics_clean: "metrics/clean.json"
+  metrics_split: "metrics/split.json"
+  metrics_diversity: "metrics/diversity.json"
+  datasheet: "docs/datasheet.md"

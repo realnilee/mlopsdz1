@@ -1,0 +1,31 @@
+{
+  "version": "v1",
+  "examples": 9061,
+  "system_prompts": 5,
+  "groups": 57,
+  "largest_group": "clinical_knowledge",
+  "largest_group_share": 0.0221,
+  "answer_len": {
+    "p10": 16,
+    "p50": 33,
+    "p90": 103,
+    "ratio_p90_p10": 6.44,
+    "cv": 0.914,
+    "min": 12,
+    "max": 617
+  },
+  "same_length_share": 0.0377,
+  "duplicate_answer_share": 0.0914,
+  "thresholds": {
+    "min_examples": 1000,
+    "min_system_prompts": 3,
+    "min_groups": 50,
+    "max_group_share": 0.1,
+    "min_answer_len_ratio": 1.6,
+    "max_same_length_share": 0.25,
+    "max_duplicate_answer_share": 0.3
+  },
+  "violations": [],
+  "passed": true,
+  "seconds": 0.34
+}

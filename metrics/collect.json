@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "files": 1,
+  "rows_scanned": 14042,
+  "rows_written": 9145,
+  "dropped_topic_filter": 0,
+  "dropped_bad_choices": 0,
+  "dropped_topic_cap": 4840,
+  "dropped_duplicate_id": 57,
+  "max_per_topic": 200,
+  "topics_filter": 0,
+  "system_prompt_variants": 5,
+  "seconds": 0.16
+}

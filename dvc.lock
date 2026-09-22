@@ -1,0 +1,216 @@
+schema: '2.0'
+stages:
+  collect:
+    cmd: python -m src.collect
+    deps:
+    - path: ../../datasets/mmlu/test/0000.parquet
+      hash: md5
+      md5: 4d0d6cea81f4907c2095f05449c1a801
+      size: 3504718
+    - path: ../../datasets/mmlu/validation/0000.parquet
+      hash: md5
+      md5: 4883ebed9d7f93f4cd64f7c290c0e5a4
+      size: 408449
+    - path: src/collect.py
+      hash: md5
+      md5: 98bb83e6efaaa6c2916b119344629255
+      size: 8315
+    - path: src/config.py
+      hash: md5
+      md5: fa8e1668dc0df43307ba79ea2733bf75
+      size: 2741
+    params:
+      params.yaml:
+        collect:
+          version: v1
+          max_per_topic: 200
+          sources:
+            v1:
+            - ../../datasets/mmlu/test/0000.parquet
+            v2:
+            - ../../datasets/mmlu/test/0000.parquet
+            - ../../datasets/mmlu/validation/0000.parquet
+          topics:
+          system_prompts:
+          - You are taking a multiple-choice exam. Read the question and the 
+            lettered options, then answer with exactly one letter and the text 
+            of that option — no explanation.
+          - Below is an exam question with answer choices labeled A-D. Pick the 
+            single correct option and reply with its letter and text only. Do 
+            not explain your reasoning.
+          - 'Task: choose the one correct answer to the question. Options are labeled
+            A through D. Respond with only the letter and the option text.'
+          - 'You are a test-taking assistant. Given a question and lettered choices,
+            name the one correct choice: its letter first, then its text. No commentary.'
+          - Answer the exam question below. Exactly one of the labeled options 
+            (A-D) is correct. Output only its letter and text.
+        paths.raw: data/raw.jsonl
+    outs:
+    - path: data/raw.jsonl
+      hash: md5
+      md5: ba9fc0f31af7673e00d3fba6a1e6ac89
+      size: 7383568
+    - path: metrics/collect.json
+      hash: md5
+      md5: 03decf50a7064710a0699506d3ecd28f
+      size: 311
+  clean:
+    cmd: python -m src.clean
+    deps:
+    - path: data/raw.jsonl
+      hash: md5
+      md5: ba9fc0f31af7673e00d3fba6a1e6ac89
+      size: 7383568
+    - path: src/clean.py
+      hash: md5
+      md5: 32862b4a2cf79199f1fc8cecb40624fa
+      size: 4824
+    - path: src/config.py
+      hash: md5
+      md5: fa8e1668dc0df43307ba79ea2733bf75
+      size: 2741
+    - path: src/dedup.py
+      hash: md5
+      md5: fde80d28430f1612c4cbb7f0fdcc1f4d
+      size: 2757
+    - path: src/pii.py
+      hash: md5
+      md5: 54de6f3690578d83cfc17094d2d2aa7a
+      size: 2397
+    - path: src/schema.py
+      hash: md5
+      md5: ad834fcb5caa483d3d5d5bfabb433cc0
+      size: 3054
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        clean:
+          min_user_chars: 30
+          max_user_chars: 4000
+          min_assistant_chars: 2
+          near_dup:
+            enabled: true
+            shingle_words: 4
+            num_perm: 64
+            threshold: 0.85
+          pii:
+            enabled: true
+        paths.clean: data/clean.jsonl
+    outs:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: b50ef364ef18078e378cea2726e2205f
+      size: 7285609
+    - path: metrics/clean.json
+      hash: md5
+      md5: 9f11fa9cf945a86f84d8dff9b45cc1f7
+      size: 475
+  diversity:
+    cmd: python -m src.diversity
+    deps:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: b50ef364ef18078e378cea2726e2205f
+      size: 7285609
+    - path: src/config.py
+      hash: md5
+      md5: fa8e1668dc0df43307ba79ea2733bf75
+      size: 2741
+    - path: src/diversity.py
+      hash: md5
+      md5: 9dcea34abe769c2534eb5438a8257ecc
+      size: 7242
+    - path: src/schema.py
+      hash: md5
+      md5: ad834fcb5caa483d3d5d5bfabb433cc0
+      size: 3054
+    - path: src/stats.py
+      hash: md5
+      md5: a54925032eff4769647b5775d72dd423
+      size: 2222
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        diversity:
+          min_examples: 1000
+          min_system_prompts: 3
+          min_groups: 50
+          max_group_share: 0.1
+          min_answer_len_ratio: 1.6
+          max_same_length_share: 0.25
+          max_duplicate_answer_share: 0.3
+        paths.clean: data/clean.jsonl
+        split.group_key: topic
+    outs:
+    - path: metrics/diversity.json
+      hash: md5
+      md5: d27cceaef0aab1032856ac44acd0979d
+      size: 687
+  split:
+    cmd: python -m src.split
+    deps:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: b50ef364ef18078e378cea2726e2205f
+      size: 7285609
+    - path: src/config.py
+      hash: md5
+      md5: fa8e1668dc0df43307ba79ea2733bf75
+      size: 2741
+    - path: src/contamination.py
+      hash: md5
+      md5: 9293919fc5964067833313514c6f9f2b
+      size: 2249
+    - path: src/dedup.py
+      hash: md5
+      md5: fde80d28430f1612c4cbb7f0fdcc1f4d
+      size: 2757
+    - path: src/schema.py
+      hash: md5
+      md5: ad834fcb5caa483d3d5d5bfabb433cc0
+      size: 3054
+    - path: src/split.py
+      hash: md5
+      md5: ad49894b97afdb5b456deddf04e286a7
+      size: 4143
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        contamination:
+          threshold: 0.85
+        paths.test: data/test.jsonl
+        paths.train: data/train.jsonl
+        paths.val: data/val.jsonl
+        split:
+          group_key: topic
+          ratios:
+            train: 0.8
+            val: 0.1
+            test: 0.1
+          seed: 42
+    outs:
+    - path: data/test.jsonl
+      hash: md5
+      md5: 72f4b2e179f83a9fc75bfeb1607be676
+      size: 554182
+    - path: data/train.jsonl
+      hash: md5
+      md5: 0b2726144c104c1310da1f89fdd823cc
+      size: 6119470
+    - path: data/val.jsonl
+      hash: md5
+      md5: 7347bc2b7e997466c28b8ae63a237d93
+      size: 611957
+    - path: metrics/split.json
+      hash: md5
+      md5: 2f8419364fef0aa00f7446f16d229789
+      size: 550
