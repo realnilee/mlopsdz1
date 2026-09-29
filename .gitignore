@@ -1,0 +1,10 @@
+__pycache__/
+.venv/
+# Данные и токенизированный датасет (тензоры) — артефакты стадии, не исходники.
+# metrics/tokenize.json и docs/tokenize_report.md — НЕ в игноре: dvc.yaml
+# объявляет metrics/tokenize.json как metrics (cache: false), а это значит
+# git его и должен трекать — иначе `dvc metrics diff` не с чем сравнивать,
+# и это же обязательная сдача по README.
+data/
+# Логи самопроверки
+.check_*.log

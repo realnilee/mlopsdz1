@@ -1,0 +1,105 @@
+{
+  "model": "Qwen/Qwen3-0.6B",
+  "enable_thinking": false,
+  "max_seq_len": 384,
+  "padding_side": "left",
+  "truncated_warn_ratio": 0.05,
+  "splits": {
+    "train": {
+      "examples_in": 8570,
+      "examples_kept": 8247,
+      "dropped_no_supervision": 323,
+      "length_tokens": {
+        "count": 8570,
+        "mean": 163.6,
+        "p50": 129,
+        "p90": 292,
+        "p99": 538,
+        "max": 869
+      },
+      "prompt_tokens": {
+        "count": 8570,
+        "mean": 148.7,
+        "p50": 115,
+        "p90": 268,
+        "p99": 516,
+        "max": 803
+      },
+      "answer_tokens": {
+        "count": 8570,
+        "mean": 14.8,
+        "p50": 12,
+        "p90": 24,
+        "p99": 47,
+        "max": 144
+      },
+      "bpe_boundary_fallback": 0,
+      "total_tokens": 1239175,
+      "supervised_tokens": 118919,
+      "truncated": 401,
+      "truncated_ratio": 0.0468,
+      "packing": {
+        "sequences_before": 8247,
+        "sequences_after": 3411,
+        "batch_size": 8,
+        "steps_before": 1031,
+        "steps_after": 427,
+        "steps_saved_ratio": 0.5858,
+        "fill_ratio": 0.9461,
+        "max_examples_per_bin": 4
+      }
+    },
+    "val": {
+      "examples_in": 1034,
+      "examples_kept": 1034,
+      "dropped_no_supervision": 0,
+      "length_tokens": {
+        "count": 1034,
+        "mean": 144.2,
+        "p50": 149,
+        "p90": 177,
+        "p99": 236,
+        "max": 314
+      },
+      "prompt_tokens": {
+        "count": 1034,
+        "mean": 130.0,
+        "p50": 132,
+        "p90": 161,
+        "p99": 200,
+        "max": 268
+      },
+      "answer_tokens": {
+        "count": 1034,
+        "mean": 14.2,
+        "p50": 11,
+        "p90": 23,
+        "p99": 44,
+        "max": 68
+      },
+      "bpe_boundary_fallback": 0,
+      "total_tokens": 149053,
+      "supervised_tokens": 14637,
+      "truncated": 0,
+      "truncated_ratio": 0.0,
+      "packing": {
+        "sequences_before": 1034,
+        "sequences_after": 425,
+        "batch_size": 8,
+        "steps_before": 130,
+        "steps_after": 54,
+        "steps_saved_ratio": 0.5846,
+        "fill_ratio": 0.9133,
+        "max_examples_per_bin": 4
+      }
+    }
+  },
+  "train_time_estimate": {
+    "epochs": 3,
+    "tokens_per_sec": 35.84,
+    "tokens_per_epoch": 1239175,
+    "seconds": 103725.6,
+    "hours": 28.81,
+    "note": "tokens_per_sec взят из замера ГЕНЕРАЦИИ в ДЗ 1. Обучение считает ещё backward и шаг оптимизатора, поэтому реальная скорость ниже в 2-3 раза, а прогноз ниже — это оптимистичная граница."
+  }
+}
