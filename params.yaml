@@ -1,0 +1,74 @@
+# Единственная точка конфигурации ДЗ 5. В src/ нет ни имени модели,
+# ни learning rate, ни путей.
+model:
+  name: "Qwen/Qwen3-0.6B"
+  device: "auto"            # auto | cpu | cuda | mps
+  # Базовые веса в bfloat16: они заморожены, точность им не нужна, а память
+  # и время уходят вдвое. Сами матрицы LoRA peft держит в float32 — там идут
+  # крошечные обновления AdamW. На старом CPU без bf16 ставьте float32.
+  dtype: "bfloat16"
+  enable_thinking: false    # как в ДЗ 4: шаблон должен совпадать с обучением
+
+data:
+  # Выход стадии tokenize из ДЗ 4. У студента — свой путь.
+  train: "data/tokenized/train.pt"
+  val: "data/tokenized/val.pt"
+
+lora:
+  r: 8
+  alpha: 16                 # итоговый масштаб апдейта alpha / r = 2
+  dropout: 0.05
+  # Только проекции внимания и MLP. embed_tokens и lm_head — это 155 млн
+  # параметров каждый; в modules_to_save они уезжают в адаптер целиком.
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+
+train:
+  seed: 42
+  epochs: 1
+  batch_size: 2
+  grad_accum: 4             # эффективный батч = 8: память как у батча 2, шаг как у батча 8
+  # 1e-2 (было) — слишком высокий для LoRA на этом масштабе: train loss
+  # взлетает до десятков на первых шагах и к концу эпохи остаётся в разы
+  # выше точки до обучения (см. лекцию и docs/defects.md, дефект 2).
+  # 2e-4 — типичный lr для LoRA r=8..16 на decoder-only модели такого размера.
+  lr: 2.0e-4
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  # 10 (курсовой эталон) откалибровано под 497 train / 100 val. У меня
+  # 8247 train / 1034 val — тех же 10 дало бы ~105 полных прогонов по val
+  # (1034 примера каждый) против ~1031 шага обучения: оценка доминировала бы
+  # над самим обучением. 150 даёт ~8 точек кривой (мимо требуемых ≥3 с запасом)
+  # при сопоставимом с обучением объёме вычислений.
+  eval_every: 150           # шагов оптимизатора между замерами val loss
+  # Логиты на весь словарь: 2 примера x 512 токенов x 151 936 x 4 байта = 0,6 ГБ.
+  # Батч 8 на оценке — уже 2,5 ГБ одних логитов, и ноутбук уходит в своп.
+  eval_batch_size: 2
+  gradient_checkpointing: true   # без него на ноутбуке с 16–32 ГБ не влезает
+  max_steps: null           # null — по эпохам; число — обрезать (smoke-тесты)
+
+# Эксперимент по слоям: второй прогон без адаптеров на первых N слоях.
+variants:
+  - name: "all_layers"
+    freeze_first: 0
+  - name: "freeze14"
+    freeze_first: 14
+
+compare:
+  max_new_tokens: 40
+  # Пять фиксированных промптов из МОЕГО датасета (ДЗ 3/4 — MMLU, по одному
+  # с разных тем из val), а не курсовые медицинские — сравнение должно
+  # показывать адаптер на моей задаче, а не на чужой (см. задание, слайд 5).
+  prompts:
+    - "Question:\nSmith & Tomlinson argued that:\n\nChoices:\nA. differences in ethnic background were more significant than class or gender in predicting educational achievement\nB. racism in schools undermined the move towards equality of opportunity for children from ethnic minorites\nC. school character far outweighed ethnic background in determining educational success\nD. gender differences in educational achievement could be attributed to inequalities of class"
+    - "Question:\nFor which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | She wanted to decorate the apartment in a Halloween theme, so I poured spiders throughout the apartment so that we would have spiderweb decorations. Scenario 2 | I put rolled oats in a bowl in the microwave and heated it.\n\nChoices:\nA. Wrong, Wrong\nB. Wrong, Not wrong\nC. Not wrong, Wrong\nD. Not wrong, Not wrong"
+    - "Question:\nWhat is the relationship between the formal sources of international law?\n\nChoices:\nA. There is no hierarchy between the formal sources of international law\nB. Treaties supersede custom\nC. Custom supersedes treaties\nD. General Principles of Law supersede both custom and treaties"
+    - "Question:\nStack is also known as\n\nChoices:\nA. FIFO memory\nB. Flash memory\nC. LIFO memory\nD. LILO memory"
+    - "Question:\nIf a real number x is chosen at random in the interval [0, 3] and a real number y is chosen at random in the interval [0, 4], what is the probability that x < y?\n\nChoices:\nA. 1/2\nB. 7/12\nC. 5/8\nD. 2/3"
+  system: "You are taking a multiple-choice exam. Read the question and the lettered options, then answer with exactly one letter and the text of that option — no explanation."
+
+paths:
+  models: "models"
+  metrics: "metrics"
+  curves: "docs/curves.png"
+  compare: "docs/compare.md"
