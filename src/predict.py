@@ -7,11 +7,14 @@ import mlflow
 import pandas as pd
 
 # tests/check.py запускает этот файл как `python -I ...` — изолированный режим
-# глушит PYTHONUTF8/PYTHONIOENCODING, и stdout падает на системную кодировку
-# Windows (cp1251), а она не кодирует часть символов в вопросах MMLU. Чтение
-# родителем всегда ждёт UTF-8, так что перенастраиваем поток явно, в коде.
-if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
-    sys.stdout.reconfigure(encoding="utf-8")
+# глушит PYTHONUTF8/PYTHONIOENCODING, и stdout/stderr падают на системную
+# кодировку Windows (cp1251), которая не кодирует часть символов в вопросах
+# MMLU и в предупреждениях transformers/huggingface (идут в stderr). Родитель
+# (subprocess.run(..., text=True)) всегда ждёт UTF-8 от обоих потоков, так что
+# перенастраиваем их явно, в коде — это работает независимо от -I.
+for _stream in (sys.stdout, sys.stderr):
+    if _stream.encoding and _stream.encoding.lower() != "utf-8":
+        _stream.reconfigure(encoding="utf-8")
 
 
 def main():
