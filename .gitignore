@@ -1,6 +1,10 @@
 .venv/
 __pycache__/
-data/
+data/*
+!data/eval/
+data/eval/*
+!data/eval/*.dvc
+!data/eval/.gitignore
 models/
 metrics/
 mlruns/
