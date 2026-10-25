@@ -25,7 +25,7 @@ evaluation → champion) на реальном железе с реальным 
 | qv-r4-low | 4 | 0.0001 | q,v | 0.9488 |
 
 Полная таблица: `docs/comparison.csv`. Выбран **`all-r8-high`**
-(run `7e4c27909af14d24a7ea74cf34211972`) — минимальный `final_val_loss`,
+(run `8871803d64154f5f99ca8e7fbd0a5846`) — минимальный `final_val_loss`,
 выбор сделан кодом `src/promote.py::select()`, не вручную.
 Больший ранг (r=8) и более широкий набор target_modules (все 7 проекций,
 не только q/v) дают заметно больший выигрыш, чем более высокий learning rate
@@ -119,5 +119,5 @@ behavioral-кейсов пройдены, золотой набор ≥50 (72), 
 (испорченные ответы кандидата корректно отвергнуты, alias не менялся).
 
 **Решение: выпустить.** `make promote` → alias `champion` переставлен на
-`models:/my-qwen-adapter/1` (run `all-r8-high`). `make check-storage` подтверждает,
+`models:/my-qwen-adapter/2` (run `all-r8-high`). `make check-storage` подтверждает,
 что этот артефакт переживает пересоздание контейнера (SHA256 совпадает).

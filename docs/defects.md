@@ -103,7 +103,7 @@ PASS: новый контейнер вернул тот же артефакт, S
   испорченные ответы кандидата): `PASS: испорченные ответы отклонены, alias не менялся`.
 
 Реальный промоут прошедшего порог кандидата: `make promote` →
-`champion -> models:/my-qwen-adapter/1` (run `all-r8-high`, `final_val_loss`
+`champion -> models:/my-qwen-adapter/2` (run `all-r8-high`, `final_val_loss`
 0.2727 против базового 1.0286, т.е. `val_ratio` ≈ 0.265 ≪ порога 1.0).
 
 ## Отдельно: два Windows-специфичных фикса (не из списка 4 дефектов)
