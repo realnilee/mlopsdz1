@@ -1,5 +1,7 @@
 """Один sweep — родительский run, каждый кандидат — отдельный дочерний run."""
 import json
+import os
+import posixpath
 import tempfile
 from pathlib import Path
 
@@ -31,10 +33,20 @@ def run_candidate(params, candidate, versions):
         samples = {"prompt": params["generation"]["prompts"], "answer": answers}
         mlflow.log_table(samples, "samples.json")
         example = pd.DataFrame({"prompt": samples["prompt"][:1]})
-        mlflow.pyfunc.log_model(artifact_path="model", python_model="src/model.py",
-            artifacts={"adapter": str(out)}, signature=infer_signature(example, answers[:1]),
-            input_example=example,
-            pip_requirements=["mlflow==2.22.2", "torch==2.14.0", "transformers==5.17.0", "peft==0.21.0", "pandas<3"])
+        # mlflow.pyfunc.log_model с artifacts={...} собирает
+        # flavors.python_function.artifacts.adapter.path через os.path.join
+        # (mlflow/pyfunc/model.py). На Windows это печёт "\" в путь, который
+        # tests/check.py потом читает как f"model/{location}/..." и шлёт по HTTP —
+        # смешение "/" и "\" ломает скачивание (слой доказательства дефекта 4).
+        # posixpath.join везде внутри этого вызова — тот же путь, без "\".
+        _real_join, os.path.join = os.path.join, posixpath.join
+        try:
+            mlflow.pyfunc.log_model(artifact_path="model", python_model="src/model.py",
+                artifacts={"adapter": str(out)}, signature=infer_signature(example, answers[:1]),
+                input_example=example,
+                pip_requirements=["mlflow==2.22.2", "torch==2.14.0", "transformers==5.17.0", "peft==0.21.0", "pandas<3"])
+        finally:
+            os.path.join = _real_join
         return {"run_id": mlflow.active_run().info.run_id, "name": candidate["name"], **results}
 
 

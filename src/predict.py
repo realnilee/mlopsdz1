@@ -1,9 +1,17 @@
 """Нужны tracking URI, имя модели и текст. Локальные параметры обучения не читаются."""
 import argparse
 import json
+import sys
 
 import mlflow
 import pandas as pd
+
+# tests/check.py запускает этот файл как `python -I ...` — изолированный режим
+# глушит PYTHONUTF8/PYTHONIOENCODING, и stdout падает на системную кодировку
+# Windows (cp1251), а она не кодирует часть символов в вопросах MMLU. Чтение
+# родителем всегда ждёт UTF-8, так что перенастраиваем поток явно, в коде.
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8")
 
 
 def main():
