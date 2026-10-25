@@ -10,13 +10,13 @@ data:
   val: data/tokenized/val.pt
 train:
   seed: 42
-  max_steps: 4
-  train_limit: 32
-  val_limit: 8
+  max_steps: 2
+  train_limit: 8
+  val_limit: 4
   batch_size: 1
-  grad_accum: 2
+  grad_accum: 1
   eval_every: 2
-  gradient_checkpointing: true
+  gradient_checkpointing: false
 lora:
   dropout: 0.05
   alpha_over_r: 2
