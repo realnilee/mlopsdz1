@@ -1,0 +1,10 @@
+{
+  "golden": "data/eval/golden.jsonl",
+  "training_index": "data/eval/training-index.jsonl",
+  "behavioral": "data/eval/behavioral.jsonl",
+  "critical_slices": ["stem"],
+  "seed": 42,
+  "system": "Reply to academic multiple-choice exam questions (STEM, humanities, social sciences) with strict JSON: a single field \"answer\" whose value is one letter from the choices shown in the question. If the message is not a lettered multiple-choice question, reply {\"answer\":\"REFUSE\"}. No other text.",
+  "max_new_tokens": 24,
+  "enable_thinking": false
+}
