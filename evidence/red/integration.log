@@ -1,0 +1,336 @@
+test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) ... 
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': '', 'max_new_tokens': 8}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': '   ', 'max_new_tokens': 8}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': 0}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': 100000}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': 33}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': '8'}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': True}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 7}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'max_new_tokens': 8}") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="['x']") ... FAIL
+  test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx") ... FAIL
+test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) ... FAIL
+test_ready_and_generate_blocked_during_warmup (tests_integration.test_http_service.ServiceTests.test_ready_and_generate_blocked_during_warmup) ... FAIL
+test_reported_version_is_the_loaded_one_through_a_b_a (tests_integration.test_http_service.ServiceTests.test_reported_version_is_the_loaded_one_through_a_b_a) ... FAIL
+test_tampered_artifact_is_never_served (tests_integration.test_http_service.ServiceTests.test_tampered_artifact_is_never_served) ... FAIL
+test_crash_between_pointer_and_journal_recovers_without_double_event (tests_integration.test_release_process.ProcessTests.test_crash_between_pointer_and_journal_recovers_without_double_event) ... FAIL
+test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) ... 
+  test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-incomplete.json') ... FAIL
+  test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-reject.json') ... FAIL
+  test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-A.json') ... FAIL
+  test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-nan.json') ... FAIL
+test_recovery_uses_cache_and_any_input_change_invalidates (tests_integration.test_release_process.ProcessTests.test_recovery_uses_cache_and_any_input_change_invalidates) ... FAIL
+test_repeat_publish_makes_one_event_new_evaluation_makes_another (tests_integration.test_release_process.ProcessTests.test_repeat_publish_makes_one_event_new_evaluation_makes_another) ... FAIL
+test_failed_fsync_keeps_old_bytes_and_no_temp_file (tests_integration.test_release_process.WriteFailureTests.test_failed_fsync_keeps_old_bytes_and_no_temp_file) ... FAIL
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': '', 'max_new_tokens': 8}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': '   ', 'max_new_tokens': 8}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': 0}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': 100000}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': 33}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': '8'}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'x', 'max_new_tokens': True}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 7}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'max_new_tokens': 8}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="['x']")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 36, in test_bad_requests_get_4xx_without_backend_call
+    self.assertEqual(http('GET', base + '/debug')[1]['calls'], before)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 9 != 0
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) (payload="{'prompt': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 35, in test_bad_requests_get_4xx_without_backend_call
+    self.assertTrue(400 <= status < 500, status)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : 200
+
+======================================================================
+FAIL: test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 39, in test_bad_requests_get_4xx_without_backend_call
+    self.assertEqual(http('GET', base + '/debug')[1]['calls'], before + 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 11 != 1
+
+======================================================================
+FAIL: test_ready_and_generate_blocked_during_warmup (tests_integration.test_http_service.ServiceTests.test_ready_and_generate_blocked_during_warmup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 17, in test_ready_and_generate_blocked_during_warmup
+    self.assertEqual(http('GET', base + '/ready')[0], 503)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 503
+
+======================================================================
+FAIL: test_reported_version_is_the_loaded_one_through_a_b_a (tests_integration.test_http_service.ServiceTests.test_reported_version_is_the_loaded_one_through_a_b_a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 49, in test_reported_version_is_the_loaded_one_through_a_b_a
+    self.assertEqual(body['model_id'], 'fixture-A', 'accepted.json сменился, загружена всё ещё A')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'fixture-B' != 'fixture-A'
+- fixture-B
+?         ^
++ fixture-A
+?         ^
+ : accepted.json сменился, загружена всё ещё A
+
+======================================================================
+FAIL: test_tampered_artifact_is_never_served (tests_integration.test_http_service.ServiceTests.test_tampered_artifact_is_never_served)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_http_service.py", line 67, in test_tampered_artifact_is_never_served
+    self.assertNotEqual(http('GET', base + '/ready')[0], 200)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 == 200
+
+======================================================================
+FAIL: test_crash_between_pointer_and_journal_recovers_without_double_event (tests_integration.test_release_process.ProcessTests.test_crash_between_pointer_and_journal_recovers_without_double_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 64, in test_crash_between_pointer_and_journal_recovers_without_double_event
+    self.assertEqual(len(self.events('fixture-B')), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-incomplete.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 41, in test_incomplete_rejected_foreign_reports_keep_pointer
+    self.assertNotEqual(self.lab('run', '--report', name).returncode, 0)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-reject.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 42, in test_incomplete_rejected_foreign_reports_keep_pointer
+    self.assertEqual(sha(self.ws / 'accepted.json'), before)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '902f955456a58a9b6a17a289c29ced2d9c625838878152e9ba72d84ab86ca1bc' != '7565758263cbed644aa5d595497d7d3bc56bb5fb366a3fce14f2a22bd37342cf'
+- 902f955456a58a9b6a17a289c29ced2d9c625838878152e9ba72d84ab86ca1bc
++ 7565758263cbed644aa5d595497d7d3bc56bb5fb366a3fce14f2a22bd37342cf
+
+
+======================================================================
+FAIL: test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-A.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 41, in test_incomplete_rejected_foreign_reports_keep_pointer
+    self.assertNotEqual(self.lab('run', '--report', name).returncode, 0)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) (report='report-nan.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 41, in test_incomplete_rejected_foreign_reports_keep_pointer
+    self.assertNotEqual(self.lab('run', '--report', name).returncode, 0)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_recovery_uses_cache_and_any_input_change_invalidates (tests_integration.test_release_process.ProcessTests.test_recovery_uses_cache_and_any_input_change_invalidates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 27, in test_recovery_uses_cache_and_any_input_change_invalidates
+    self.assertIn('PREPARED', changed.stdout, 'изменение байтов обязано инвалидировать кеш')
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PREPARED' not found in 'CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac\nPUBLISHED fixture-B\n' : изменение байтов обязано инвалидировать кеш
+
+======================================================================
+FAIL: test_repeat_publish_makes_one_event_new_evaluation_makes_another (tests_integration.test_release_process.ProcessTests.test_repeat_publish_makes_one_event_new_evaluation_makes_another)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 51, in test_repeat_publish_makes_one_event_new_evaluation_makes_another
+    self.assertEqual(len(self.events('fixture-B')), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 != 1
+
+======================================================================
+FAIL: test_failed_fsync_keeps_old_bytes_and_no_temp_file (tests_integration.test_release_process.WriteFailureTests.test_failed_fsync_keeps_old_bytes_and_no_temp_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\tests_integration\test_release_process.py", line 75, in test_failed_fsync_keeps_old_bytes_and_no_temp_file
+    with self.assertRaises(OSError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^
+AssertionError: OSError not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.003s
+
+FAILED (failures=23)
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpx80gcgbl\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpn88220k8\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpcvc95fsn\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmp8zsp682e\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmppvvw7125\lab
+
+$ lab run -> exit 1
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\shish\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\shish\\AppData\\Local\\Temp\\tmppvvw7125\\lab\\publications.jsonl'
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmp7ebdc52t\lab
+
+$ lab run --report report-incomplete.json -> exit 0
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab run --report report-reject.json -> exit 1
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\release.py", line 17, in publish
+    validate_release(manifest, report)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\release.py", line 13, in validate_release
+    raise ValueError('Кандидат отклонён')
+ValueError: Кандидат отклонён
+
+$ lab run --report report-A.json -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab run --report report-nan.json -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpqdc55mkw\lab
+
+$ lab run --fail-after-prepare -> exit 1
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+space,args.report,args.fail_after_prepare)
+         ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\lab.py", line 67, in run
+    if fail_after_prepare:raise RuntimeError('Инъекция сбоя после подготовки')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Инъекция сбоя после подготовки
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpiug7pmzi\lab
+
+$ lab run -> exit 0
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac
+PUBLISHED fixture-B
+
