@@ -1,0 +1,14 @@
+$ python -m flows.release_flow --workspace .release-run run --real
+23:37:15.196 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8228
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+23:37:19.824 | INFO    | Flow run 'ethereal-cuttlefish' - Beginning flow run 'ethereal-cuttlefish' for flow 'release-model'
+23:37:19.842 | INFO    | Task run 'prepare-74d' - Finished in state Cached(type=COMPLETED)
+CACHE_HIT 323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1 state=Cached
+23:37:21.826 | INFO    | Task run 'fetch-artifact-548' - Finished in state Completed()
+23:37:21.863 | INFO    | Task run 'verify-artifact-f0c' - Finished in state Completed()
+23:37:24.730 | INFO    | Task run 'admission-gate-51d' - Finished in state Completed()
+23:37:24.749 | INFO    | Task run 'publish-4b0' - Finished in state Completed()
+ALREADY_PUBLISHED my-qwen-adapter-v2-8871803d
+23:37:24.865 | INFO    | Flow run 'ethereal-cuttlefish' - Finished in state Completed()
+23:37:24.873 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8228
+exit=0

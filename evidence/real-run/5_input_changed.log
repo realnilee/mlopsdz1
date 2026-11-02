@@ -1,0 +1,14 @@
+$ python -m flows.release_flow --workspace .release-run run --real
+23:37:28.801 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8206
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+23:37:33.394 | INFO    | Flow run 'cordial-chipmunk' - Beginning flow run 'cordial-chipmunk' for flow 'release-model'
+23:37:41.444 | INFO    | Task run 'prepare-e4b' - Finished in state Completed()
+PREPARED 396dace72d62a20ab0bf22e987fb17ca13e2cd0c39bd5db067a5b41caa166348 state=Completed
+23:37:42.732 | INFO    | Task run 'fetch-artifact-f16' - Finished in state Completed()
+23:37:42.772 | INFO    | Task run 'verify-artifact-355' - Finished in state Completed()
+23:37:45.636 | INFO    | Task run 'admission-gate-802' - Finished in state Completed()
+23:37:45.647 | INFO    | Task run 'publish-bfc' - Finished in state Completed()
+ALREADY_PUBLISHED my-qwen-adapter-v2-8871803d
+23:37:46.441 | INFO    | Flow run 'cordial-chipmunk' - Finished in state Completed()
+23:37:46.455 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8206
+exit=0

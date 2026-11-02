@@ -1,0 +1,14 @@
+$ python -m flows.release_flow --workspace .release-run run --real
+23:37:01.549 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8010
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+23:37:06.112 | INFO    | Flow run 'portable-ocelot' - Beginning flow run 'portable-ocelot' for flow 'release-model'
+23:37:06.130 | INFO    | Task run 'prepare-d36' - Finished in state Cached(type=COMPLETED)
+CACHE_HIT 323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1 state=Cached
+23:37:08.115 | INFO    | Task run 'fetch-artifact-efb' - Finished in state Completed()
+23:37:08.155 | INFO    | Task run 'verify-artifact-ab5' - Finished in state Completed()
+23:37:11.010 | INFO    | Task run 'admission-gate-405' - Finished in state Completed()
+23:37:11.022 | INFO    | Task run 'publish-7a7' - Finished in state Completed()
+PUBLISHED my-qwen-adapter-v2-8871803d
+23:37:11.151 | INFO    | Flow run 'portable-ocelot' - Finished in state Completed()
+23:37:11.158 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8010
+exit=0

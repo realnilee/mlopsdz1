@@ -1,0 +1,88 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   9%|▉         | 29/311 [00:00<00:01, 279.42it/s]Loading weights:  18%|█▊        | 57/311 [00:00<00:00, 258.39it/s]Loading weights:  27%|██▋       | 83/311 [00:00<00:01, 212.60it/s]Loading weights:  34%|███▍      | 105/311 [00:00<00:01, 150.07it/s]Loading weights:  44%|████▎     | 136/311 [00:00<00:00, 188.14it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 409.96it/s]
+{
+  "startup": [
+    {
+      "t": 1.06,
+      "health_status": 200,
+      "ready_status": 503,
+      "generate_status": 503
+    },
+    {
+      "t": 11.17,
+      "health_status": 200,
+      "ready_status": 200,
+      "generate_status": 200
+    }
+  ],
+  "ready_body": {
+    "ready": true,
+    "model_id": "my-qwen-adapter-v2-8871803d",
+    "runtime_sha256": "697f6470fcc17b085ca5b2248b1b2120192be7d9e2bc4fb09d7124f7f3d63ebe"
+  },
+  "valid": {
+    "status": 200,
+    "body": {
+      "answer": "{\"answer\": \"B\"}",
+      "output_tokens": 7,
+      "input_tokens": 106,
+      "request_id": "5d3b680f-c63c-4948-af2f-d01cd4aa56fb",
+      "model_id": "my-qwen-adapter-v2-8871803d",
+      "runtime_sha256": "697f6470fcc17b085ca5b2248b1b2120192be7d9e2bc4fb09d7124f7f3d63ebe",
+      "queue_seconds": 7.499998901039362e-06,
+      "generation_seconds": 0.4344093999970937
+    }
+  },
+  "invalid": [
+    {
+      "payload": {
+        "prompt": "x",
+        "max_new_tokens": 100000
+      },
+      "status": 400
+    },
+    {
+      "payload": {
+        "prompt": ""
+      },
+      "status": 400
+    },
+    {
+      "payload": {
+        "prompt": "x",
+        "max_new_tokens": "8"
+      },
+      "status": 400
+    }
+  ],
+  "debug_route_status": 404
+}
+[
+  {
+    "concurrency": 1,
+    "n": 8,
+    "ok": 8,
+    "errors": 0,
+    "batch_seconds": 3.509,
+    "ok_per_second": 2.28,
+    "mean_latency": 0.439,
+    "max_latency": 0.482,
+    "mean_queue": 0.0,
+    "mean_generation": 0.435,
+    "total_output_tokens": 57,
+    "same_as_eval": 8
+  },
+  {
+    "concurrency": 2,
+    "n": 8,
+    "ok": 8,
+    "errors": 0,
+    "batch_seconds": 3.294,
+    "ok_per_second": 2.429,
+    "mean_latency": 0.774,
+    "max_latency": 0.873,
+    "mean_queue": 0.358,
+    "mean_generation": 0.411,
+    "total_output_tokens": 57,
+    "same_as_eval": 8
+  }
+]

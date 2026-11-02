@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "model_id": "my-qwen-adapter-v2-8871803d",
+  "artifact_uri": "models:/my-qwen-adapter/2",
+  "training_run_id": "8871803d64154f5f99ca8e7fbd0a5846",
+  "adapter_path": "artifact/adapter",
+  "model_sha256": "c7d99df1971d58030ff1a1a137c45afb099cb01fe0c6e78c6f0a6401c7e3275f",
+  "protocol_sha256": "5f21970acf30ca073189ed30ee38e73541b978b8051ba7592e75e056b79a83a1",
+  "golden_sha256": "059fd940c9646d95c4dfdbf213dfd0e49f07c03ad00e3f4af7f324274e263ccf",
+  "runtime_sha256": "697f6470fcc17b085ca5b2248b1b2120192be7d9e2bc4fb09d7124f7f3d63ebe",
+  "runtime": {
+    "base_model": "Qwen/Qwen3-0.6B",
+    "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "tokenizer_sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506",
+    "template_sha256": "51fa65c79bb57f058dc7ef8734884bd325fe9d45bb03a61bfef59785d3bc2da9",
+    "generation": {
+      "system": "Reply to academic multiple-choice exam questions (STEM, humanities, social sciences) with strict JSON: a single field \"answer\" whose value is one letter from the choices shown in the question. If the message is not a lettered multiple-choice question, reply {\"answer\":\"REFUSE\"}. No other text.",
+      "do_sample": false,
+      "seed": 42,
+      "max_new_tokens": 24,
+      "enable_thinking": false
+    },
+    "dtype": "bfloat16"
+  },
+  "file_hashes": {
+    "artifact/adapter/adapter_config.json": "a4afedac169af5b9fec1791cde6688736cbc49ec1e00d6188d509ae0491af845",
+    "artifact/adapter/adapter_model.safetensors": "ffd3e3c89fdf8988e290811aad1301f20042f2ef10fa990e7a7db1b1bc7e7fe7",
+    "artifact/adapter/chat_template.jinja": "51fa65c79bb57f058dc7ef8734884bd325fe9d45bb03a61bfef59785d3bc2da9",
+    "artifact/adapter/manifest.json": "8806e98a5a92bf30d4cff05822a072274dfff89499904f8584eecff331b81d8e",
+    "artifact/adapter/tokenizer.json": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506",
+    "artifact/adapter/tokenizer_config.json": "154e5ff1e7c152d964edf30da854ea62465c767719ac8e97e58babf2d4fa9079"
+  }
+}

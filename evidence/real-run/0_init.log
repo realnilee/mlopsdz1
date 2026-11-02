@@ -1,0 +1,3 @@
+$ python -m flows.release_flow --workspace .release-run init --real
+Создан реальный рабочий каталог: .release-run
+exit=0

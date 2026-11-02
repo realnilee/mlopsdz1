@@ -1,0 +1,195 @@
+HW_LAB_CMD="-m flows.release_flow" HW_SERVICE_CMD="-m app.api" .venv/Scripts/python.exe -m unittest discover -s tests_integration -t . -v
+test_bad_requests_get_4xx_without_backend_call (tests_integration.test_http_service.ServiceTests.test_bad_requests_get_4xx_without_backend_call) ... ok
+test_ready_and_generate_blocked_during_warmup (tests_integration.test_http_service.ServiceTests.test_ready_and_generate_blocked_during_warmup) ... ok
+test_reported_version_is_the_loaded_one_through_a_b_a (tests_integration.test_http_service.ServiceTests.test_reported_version_is_the_loaded_one_through_a_b_a) ... ok
+test_tampered_artifact_is_never_served (tests_integration.test_http_service.ServiceTests.test_tampered_artifact_is_never_served) ... ok
+test_crash_between_pointer_and_journal_recovers_without_double_event (tests_integration.test_release_process.ProcessTests.test_crash_between_pointer_and_journal_recovers_without_double_event) ... ok
+test_incomplete_rejected_foreign_reports_keep_pointer (tests_integration.test_release_process.ProcessTests.test_incomplete_rejected_foreign_reports_keep_pointer) ... ok
+test_recovery_uses_cache_and_any_input_change_invalidates (tests_integration.test_release_process.ProcessTests.test_recovery_uses_cache_and_any_input_change_invalidates) ... $ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpkzb0qgur\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmp44h7tjq_\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmp2f9grkmn\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpiqje2aq8\lab
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmpmcoymtlo\lab
+
+$ lab run -> exit 1
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Completed
+FAILED PermissionError: [Errno 13] Permission denied: 'C:\\Users\\shish\\AppData\\Local\\Temp\\tmpmcoymtlo\\lab\\publications.jsonl'
+AppData\\Local\\Temp\\tmpmcoymtlo\\lab\\publications.jsonl'
+23:42:54.110 | INFO    | Flow run 'blond-koel' - Finished in state Failed("Flow run encountered an exception: PermissionError: [Errno 13] Permission denied: 'C:\\\\Users\\\\shish\\\\AppData\\\\Local\\\\Temp\\\\tmpmcoymtlo\\\\lab\\\\publications.jsonl'")
+23:42:54.128 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8873
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+PUBLISHED fixture-B
+Task run 'verify-artifact-bdb' - Finished in state Completed()
+23:43:02.295 | INFO    | Task run 'admission-gate-fba' - Finished in state Completed()
+23:43:02.306 | INFO    | Task run 'publish-428' - Finished in state Completed()
+23:43:03.250 | INFO    | Flow run 'tomato-chipmunk' - Finished in state Completed()
+23:43:03.262 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8489
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+ALREADY_PUBLISHED fixture-B
+k run 'verify-artifact-f7a' - Finished in state Completed()
+23:43:11.469 | INFO    | Task run 'admission-gate-3fa' - Finished in state Completed()
+23:43:11.479 | INFO    | Task run 'publish-90e' - Finished in state Completed()
+23:43:12.432 | INFO    | Flow run 'axiomatic-shoebill' - Finished in state Completed()
+23:43:12.441 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8258
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmp6xj7wwu8\lab
+
+$ lab run --report report-incomplete.json -> exit 1
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Completed
+FAILED ValueError: report: статус не complete
+C:\Users\shish\Desktop\mlops дз\дз 8-9-10\hw8910-broken\release.py", line 33, in _require
+    raise ValueError(message)
+ValueError: report: статус не complete
+23:43:21.796 | INFO    | Flow run 'humorous-loris' - Finished in state Failed('Flow run encountered an exception: ValueError: report: статус не complete')
+23:43:21.809 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8284
+
+$ lab run --report report-reject.json -> exit 1
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+FAILED ValueError: report: кандидат не прошёл допуск
+sktop\mlops дз\дз 8-9-10\hw8910-broken\release.py", line 33, in _require
+    raise ValueError(message)
+ValueError: report: кандидат не прошёл допуск
+23:43:30.957 | INFO    | Flow run 'peculiar-labrador' - Finished in state Failed('Flow run encountered an exception: ValueError: report: кандидат не прошёл допуск')
+23:43:30.968 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8039
+
+$ lab run --report report-A.json -> exit 1
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+FAILED ValueError: report: model_id не совпадает с manifest
+8-9-10\hw8910-broken\release.py", line 33, in _require
+    raise ValueError(message)
+ValueError: report: model_id не совпадает с manifest
+23:43:40.112 | INFO    | Flow run 'amorphous-rattlesnake' - Finished in state Failed('Flow run encountered an exception: ValueError: report: model_id не совпадает с manifest')
+23:43:40.127 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8310
+
+$ lab run --report report-nan.json -> exit 1
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+FAILED ValueError: report: некорректная метрика accuracy
+ops дз\дз 8-9-10\hw8910-broken\release.py", line 33, in _require
+    raise ValueError(message)
+ValueError: report: некорректная метрика accuracy
+23:43:49.199 | INFO    | Flow run 'almond-junglefowl' - Finished in state Failed('Flow run encountered an exception: ValueError: report: некорректная метрика accuracy')
+23:43:49.212 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8914
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmp8j2afy5e\lab
+
+$ lab run --fail-after-prepare -> exit 1
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Completed
+FAILED RuntimeError: Инъекция сбоя после подготовки
+flows\release_flow.py", line 59, in release_model
+    raise RuntimeError('Инъекция сбоя после подготовки')
+RuntimeError: Инъекция сбоя после подготовки
+23:43:58.411 | INFO    | Flow run 'amethyst-cuckoo' - Finished in state Failed('Flow run encountered an exception: RuntimeError: Инъекция сбоя после подготовки')
+23:43:58.421 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8748
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+PUBLISHED fixture-B
+ Task run 'verify-artifact-5a7' - Finished in state Completed()
+23:44:06.549 | INFO    | Task run 'admission-gate-ae1' - Finished in state Completed()
+23:44:06.558 | INFO    | Task run 'publish-8f0' - Finished in state Completed()
+23:44:07.502 | INFO    | Flow run 'casual-hamster' - Finished in state Completed()
+23:44:07.517 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8633
+
+$ lab run -> exit 0
+PREPARED c0c60b7d1b3fc541674535fb8f81e96fe34b2d20f8eecf5dc92f746f74c1ad33 state=Completed
+ALREADY_PUBLISHED fixture-B
+.1", "storage_block_id": null}', 'id_m0': '01a19e01-6baa-7bbd-85f9-0e44d42d0520', 'created_m0': '2026-11-02 20:44:15.848885', 'updated': '2026-11-02 20:44:15.848885'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+23:44:16.661 | INFO    | Flow run 'positive-gazelle' - Finished in state Completed()
+23:44:16.668 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8777
+
+$ lab run -> exit 0
+PREPARED c0c60b7d1b3fc541674535fb8f81e96fe34b2d20f8eecf5dc92f746f74c1ad33 state=Completed
+ALREADY_PUBLISHED fixture-B
+Task run 'verify-artifact-aba' - Finished in state Completed()
+23:44:24.835 | INFO    | Task run 'admission-gate-ebd' - Finished in state Completed()
+23:44:24.839 | INFO    | Task run 'publish-2ff' - Finished in state Completed()
+23:44:25.796 | INFO    | Flow run 'happy-bandicoot' - Finished in state Completed()
+23:44:25.807 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8714
+
+$ lab run -> exit 0
+PREPARED c0c60b7d1b3fc541674535fb8f81e96fe34b2d20f8eecf5dc92f746f74c1ad33 state=Completed
+ALREADY_PUBLISHED fixture-B
+Task run 'verify-artifact-b9e' - Finished in state Completed()
+23:44:33.954 | INFO    | Task run 'admission-gate-ac0' - Finished in state Completed()
+23:44:33.963 | INFO    | Task run 'publish-771' - Finished in state Completed()
+23:44:34.915 | INFO    | Flow run 'vociferous-ibis' - Finished in state Completed()
+23:44:34.927 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8159
+
+$ lab run -> exit 0
+PREPARED c0c60b7d1b3fc541674535fb8f81e96fe34b2d20f8eecf5dc92f746f74c1ad33 state=Completed
+ALREADY_PUBLISHED fixture-B
+ase_id": null}', 'data_m0': None, 'id_m0': '01a19e01-d6b1-70fd-9752-81dde0214298', 'created_m0': '2026-11-02 20:44:43.210255', 'updated': '2026-11-02 20:44:43.210778'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+23:44:44.036 | INFO    | Flow run 'tunneling-stork' - Finished in state Completed()
+23:44:44.049 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8029
+ok
+test_repeat_publish_makes_one_event_new_evaluation_makes_another (tests_integration.test_release_process.ProcessTests.test_repeat_publish_makes_one_event_new_evaluation_makes_another) ... ok
+test_failed_fsync_keeps_old_bytes_and_no_temp_file (tests_integration.test_release_process.WriteFailureTests.test_failed_fsync_keeps_old_bytes_and_no_temp_file) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 179.322s
+
+OK
+
+$ lab run -> exit 0
+PREPARED c0c60b7d1b3fc541674535fb8f81e96fe34b2d20f8eecf5dc92f746f74c1ad33 state=Completed
+ALREADY_PUBLISHED fixture-B
+ease_id": null}', 'data_m0': None, 'id_m0': '01a19e01-fa33-7a62-8806-127abbc2ffb4', 'created_m0': '2026-11-02 20:44:52.326929', 'updated': '2026-11-02 20:44:52.327489'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+23:44:53.130 | INFO    | Flow run 'turquoise-coua' - Finished in state Completed()
+23:44:53.142 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8731
+
+$ lab init -> exit 0
+Создан синтетический стенд: C:\Users\shish\AppData\Local\Temp\tmp80vz0tkk\lab
+
+$ lab run -> exit 0
+PREPARED 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Completed
+PUBLISHED fixture-B
+k run 'verify-artifact-fc2' - Finished in state Completed()
+23:45:01.382 | INFO    | Task run 'admission-gate-a1d' - Finished in state Completed()
+23:45:01.388 | INFO    | Task run 'publish-1ce' - Finished in state Completed()
+23:45:02.338 | INFO    | Flow run 'stimulating-bobcat' - Finished in state Completed()
+23:45:02.349 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8873
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+ALREADY_PUBLISHED fixture-B
+_id": null}', 'data_m0': None, 'id_m0': '01a19e02-42c9-7cba-81a5-ead5a51359d5', 'created_m0': '2026-11-02 20:45:10.869392', 'updated': '2026-11-02 20:45:10.869392'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+23:45:11.694 | INFO    | Flow run 'marvellous-griffin' - Finished in state Completed()
+23:45:11.706 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8431
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+ALREADY_PUBLISHED fixture-B
+  | Task run 'verify-artifact-414' - Finished in state Completed()
+23:45:19.974 | INFO    | Task run 'admission-gate-456' - Finished in state Completed()
+23:45:19.982 | INFO    | Task run 'publish-35b' - Finished in state Completed()
+23:45:20.934 | INFO    | Flow run 'shrewd-myna' - Finished in state Completed()
+23:45:20.945 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8053
+
+$ lab run -> exit 0
+CACHE_HIT 19b8b0a21157bd3e44e7afd00735c6fd9cdf05ee7f668a5013f5c9f1ff16c1ac state=Cached
+PUBLISHED fixture-B
+ask run 'verify-artifact-a5c' - Finished in state Completed()
+23:45:29.158 | INFO    | Task run 'admission-gate-0e2' - Finished in state Completed()
+23:45:29.170 | INFO    | Task run 'publish-eb8' - Finished in state Completed()
+23:45:30.120 | INFO    | Flow run 'humorous-lemming' - Finished in state Completed()
+23:45:30.127 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8089
+

@@ -1,0 +1,32 @@
+== 0_init exit=0
+== 1_crash_after_prepare exit=1
+PREPARED 323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1 state=Completed
+FAILED RuntimeError: Инъекция сбоя после подготовки
+== 2_crash_after_pointer exit=1
+CACHE_HIT 323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1 state=Cached
+FAILED RuntimeError: Инъекция сбоя между указателем и журналом
+2ca55acbc23b489f2ea666998cd4ed665e7a9f586a68ef947f32bcaf3972a24e *.release-run/accepted.json
+== 3_recover exit=0
+CACHE_HIT 323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1 state=Cached
+PUBLISHED my-qwen-adapter-v2-8871803d
+2ca55acbc23b489f2ea666998cd4ed665e7a9f586a68ef947f32bcaf3972a24e *.release-run/accepted.json
+== 4_repeat exit=0
+CACHE_HIT 323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1 state=Cached
+ALREADY_PUBLISHED my-qwen-adapter-v2-8871803d
+2ca55acbc23b489f2ea666998cd4ed665e7a9f586a68ef947f32bcaf3972a24e *.release-run/accepted.json
+== 5_input_changed exit=0
+PREPARED 396dace72d62a20ab0bf22e987fb17ca13e2cd0c39bd5db067a5b41caa166348 state=Completed
+ALREADY_PUBLISHED my-qwen-adapter-v2-8871803d
+== 6_input_restored exit=0
+CACHE_HIT 323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1 state=Cached
+ALREADY_PUBLISHED my-qwen-adapter-v2-8871803d
+2ca55acbc23b489f2ea666998cd4ed665e7a9f586a68ef947f32bcaf3972a24e *.release-run/accepted.json
+--- publications
+{"release_id": "29aaed703d080beb4406fc1e1f897ce41f6156d646bffa18e34cb2b652e4b4ed", "model_id": "my-qwen-adapter-v2-8871803d", "evaluation_run_id": "f3c7df45e4934c80a788fb863a609846", "prepared": "323f0806f7c0f4f3bd51f2564c41cc0b6addf93dd0082544a45f977809196dd1"}
+--- attempts
+{"candidate": "hw67-candidate", "report": "release-report.json", "outcome": "failed", "error": "Инъекци
+{"candidate": "hw67-candidate", "report": "release-report.json", "outcome": "failed", "error": "Инъекци
+{"candidate": "hw67-candidate", "report": "release-report.json", "outcome": "published"}
+{"candidate": "hw67-candidate", "report": "release-report.json", "outcome": "already_published"}
+{"candidate": "hw67-candidate", "report": "release-report.json", "outcome": "already_published"}
+{"candidate": "hw67-candidate", "report": "release-report.json", "outcome": "already_published"}

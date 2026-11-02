@@ -1,0 +1,61 @@
+{
+  "model_id": "my-qwen-adapter-v2-8871803d",
+  "model_sha256": "c7d99df1971d58030ff1a1a137c45afb099cb01fe0c6e78c6f0a6401c7e3275f",
+  "runtime_sha256": "697f6470fcc17b085ca5b2248b1b2120192be7d9e2bc4fb09d7124f7f3d63ebe",
+  "protocol_sha256": "5f21970acf30ca073189ed30ee38e73541b978b8051ba7592e75e056b79a83a1",
+  "golden_sha256": "059fd940c9646d95c4dfdbf213dfd0e49f07c03ad00e3f4af7f324274e263ccf",
+  "status": "complete",
+  "passed": true,
+  "reason": null,
+  "evaluation_run_id": "f3c7df45e4934c80a788fb863a609846",
+  "training_run_id": "8871803d64154f5f99ca8e7fbd0a5846",
+  "metrics": {
+    "accuracy": 0.4722222222222222,
+    "format_rate": 1.0
+  },
+  "baseline_metrics": {
+    "accuracy": 0.3888888888888889,
+    "format_rate": 0.8333333333333334
+  },
+  "behavioral": {
+    "n": 5,
+    "correct": 5,
+    "valid": 5,
+    "errors": 0,
+    "accuracy": 1.0,
+    "format_rate": 1.0
+  },
+  "gate": {
+    "passed": true,
+    "overall_accuracy": {
+      "baseline": 0.3888888888888889,
+      "candidate": 0.4722222222222222
+    },
+    "overall_format_rate": {
+      "baseline": 0.8333333333333334,
+      "candidate": 1.0
+    },
+    "critical_slices": [
+      "stem"
+    ],
+    "behavioral_n": 5
+  },
+  "sources": {
+    "baseline-eval.json": {
+      "path": "metrics/baseline-eval.json",
+      "sha256": "0d22ca6e90c97528972a5a3761590502daebd4a3057f199c7c58fcf87de19f09"
+    },
+    "candidate-eval.json": {
+      "path": "metrics/candidate-eval.json",
+      "sha256": "cbbe6fc725df974f7d54430bdc6b83e9ad9e63d9d42728b103e930e218ebb94a"
+    },
+    "baseline-outputs.json": {
+      "path": "metrics/baseline-outputs.json",
+      "sha256": "0649a7d1e14323845f72994fb7fbe2d10423b57913a932bf6c6c55fb4562dfa6"
+    },
+    "candidate-outputs.json": {
+      "path": "metrics/candidate-outputs.json",
+      "sha256": "30d58c9df36f24ada8948dca6d493806ea3a1198d49a894669bda335374618aa"
+    }
+  }
+}

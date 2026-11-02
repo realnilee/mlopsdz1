@@ -8,3 +8,6 @@ models/
 *.bin
 *.pt
 .lab*/
+.release*/
+.prefect-results/
+evidence/real/

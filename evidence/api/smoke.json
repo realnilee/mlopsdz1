@@ -1,0 +1,57 @@
+{
+  "startup": [
+    {
+      "t": 1.06,
+      "health_status": 200,
+      "ready_status": 503,
+      "generate_status": 503
+    },
+    {
+      "t": 11.17,
+      "health_status": 200,
+      "ready_status": 200,
+      "generate_status": 200
+    }
+  ],
+  "ready_body": {
+    "ready": true,
+    "model_id": "my-qwen-adapter-v2-8871803d",
+    "runtime_sha256": "697f6470fcc17b085ca5b2248b1b2120192be7d9e2bc4fb09d7124f7f3d63ebe"
+  },
+  "valid": {
+    "status": 200,
+    "body": {
+      "answer": "{\"answer\": \"B\"}",
+      "output_tokens": 7,
+      "input_tokens": 106,
+      "request_id": "5d3b680f-c63c-4948-af2f-d01cd4aa56fb",
+      "model_id": "my-qwen-adapter-v2-8871803d",
+      "runtime_sha256": "697f6470fcc17b085ca5b2248b1b2120192be7d9e2bc4fb09d7124f7f3d63ebe",
+      "queue_seconds": 7.499998901039362e-06,
+      "generation_seconds": 0.4344093999970937
+    }
+  },
+  "invalid": [
+    {
+      "payload": {
+        "prompt": "x",
+        "max_new_tokens": 100000
+      },
+      "status": 400
+    },
+    {
+      "payload": {
+        "prompt": ""
+      },
+      "status": 400
+    },
+    {
+      "payload": {
+        "prompt": "x",
+        "max_new_tokens": "8"
+      },
+      "status": 400
+    }
+  ],
+  "debug_route_status": 404
+}

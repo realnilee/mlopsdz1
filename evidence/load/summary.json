@@ -1,0 +1,30 @@
+[
+  {
+    "concurrency": 1,
+    "n": 8,
+    "ok": 8,
+    "errors": 0,
+    "batch_seconds": 3.509,
+    "ok_per_second": 2.28,
+    "mean_latency": 0.439,
+    "max_latency": 0.482,
+    "mean_queue": 0.0,
+    "mean_generation": 0.435,
+    "total_output_tokens": 57,
+    "same_as_eval": 8
+  },
+  {
+    "concurrency": 2,
+    "n": 8,
+    "ok": 8,
+    "errors": 0,
+    "batch_seconds": 3.294,
+    "ok_per_second": 2.429,
+    "mean_latency": 0.774,
+    "max_latency": 0.873,
+    "mean_queue": 0.358,
+    "mean_generation": 0.411,
+    "total_output_tokens": 57,
+    "same_as_eval": 8
+  }
+]

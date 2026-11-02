@@ -1,0 +1,7 @@
+--- без поломки
+unittest -s tests -> exit 0: OK
+unittest -s tests_integration -t . -> exit 0: OK
+--- поломка: report.get('passed') is True -> report.get('passed')
+unittest -s tests -> exit 1: FAILED (failures=1)
+unittest -s tests_integration -t . -> exit 0: OK
+итог: чистая копия exit=0, сломанная exit=1
