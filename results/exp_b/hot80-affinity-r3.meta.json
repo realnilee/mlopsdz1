@@ -1,0 +1,31 @@
+{
+  "run": "hot80-affinity-r3",
+  "start_at": 1794939032.2541924,
+  "measure_from": 1794939042.2541924,
+  "measure_to": 1794939162.2541924,
+  "clients": [
+    {
+      "pod": "loadgen-87c6d5b99-2x5qr",
+      "ip": "10.244.0.70"
+    },
+    {
+      "pod": "loadgen-87c6d5b99-85wqx",
+      "ip": "10.244.0.69"
+    },
+    {
+      "pod": "loadgen-87c6d5b99-rvdnv",
+      "ip": "10.244.0.71"
+    },
+    {
+      "pod": "loadgen-87c6d5b99-v95fq",
+      "ip": "10.244.0.68"
+    }
+  ],
+  "servers": {
+    "sim-546fb9d66f-7kqq9": "10.244.0.26",
+    "sim-546fb9d66f-drgpg": "10.244.0.27"
+  },
+  "cache_state": "сброшен перед прогоном, затем 10 с прогрева без учёта",
+  "scheduled": 446,
+  "rows": 446
+}

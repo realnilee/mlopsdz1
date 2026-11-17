@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sim-api
+description: Сервис ДЗ 11 с имитатором backend (backend_mode=simulated)
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

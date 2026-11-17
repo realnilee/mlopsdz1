@@ -1,0 +1,31 @@
+{
+  "run": "uniform-plain-r1",
+  "start_at": 1794937694.4671965,
+  "measure_from": 1794937704.4671965,
+  "measure_to": 1794937824.4671965,
+  "clients": [
+    {
+      "pod": "loadgen-7c5b8db6f-6l7ps",
+      "ip": "10.244.0.35"
+    },
+    {
+      "pod": "loadgen-7c5b8db6f-6n6d6",
+      "ip": "10.244.0.34"
+    },
+    {
+      "pod": "loadgen-7c5b8db6f-wccck",
+      "ip": "10.244.0.33"
+    },
+    {
+      "pod": "loadgen-7c5b8db6f-wgsdk",
+      "ip": "10.244.0.32"
+    }
+  ],
+  "servers": {
+    "sim-546fb9d66f-7kqq9": "10.244.0.26",
+    "sim-546fb9d66f-drgpg": "10.244.0.27"
+  },
+  "cache_state": "сброшен перед прогоном, затем 10 с прогрева без учёта",
+  "scheduled": 460,
+  "rows": 460
+}

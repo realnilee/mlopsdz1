@@ -1,0 +1,19 @@
+21:35:00 helm upgrade --install -> Release "sim" has been upgraded. Happy Helming!
+test_1_new_pod_gets_no_traffic_before_warmup (tests.test_k8s.K8sTests) ... C:\Users\shish\AppData\Local\Programs\Python\Python310\lib\unittest\case.py:549: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='UTF-8'>
+  method()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_2_version_after_rollback_is_confirmed_by_answers (tests.test_k8s.K8sTests) ... 21:36:04 helm history sim -> [{"revision":4,"updated":"2026-11-17T20:37:23.1542443+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":5,"updated":"2026-11-17T20:37:42.3232311+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":6,"updated":"2026-11-17T20:40:21.5466928+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":7,"updated":"2026-11-17T20:41:30.2582651+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","rollback_revision":4,"description":"Rollback to 4"},{"revision":8,"updated":"2026-11-17T20:43:07.3895521+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":9,"updated":"2026-11-17T20:45:10.0842156+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":10,"updated":"2026-11-17T21:17:15.4924433+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":11,"updated":"2026-11-17T21:25:46.9769606+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":12,"updated":"2026-11-17T21:32:54.4533471+03:00","status":"superseded","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"},{"revision":13,"updated":"2026-11-17T21:34:15.0234626+03:00","status":"deployed","chart":"sim-api-0.1.0","app_version":"0.1.0","description":"Upgrade complete"}]
+21:36:50 helm upgrade --install -> Release "sim" has been upgraded. Happy Helming!
+21:37:40 helm rollback sim -> Rollback was a success! Happy Helming!
+ok
+test_3_replaced_pod_restores_version_and_continues_dialog (tests.test_k8s.K8sTests) ... ok
+test_4_two_dialogs_stay_isolated (tests.test_k8s.K8sTests) ... ok
+test_each_outcome_is_counted_separately (tests.test_local.AccountingTests) ... ok
+test_retries_are_separate_attempts (tests.test_local.AccountingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 258.659s
+
+OK
+sys:1: ResourceWarning: unclosed <socket.socket fd=936, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61834)>

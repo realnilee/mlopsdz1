@@ -1,0 +1,25 @@
+# Клиентские Pod с собственными IP: генератор нагрузки запускается в них через kubectl exec.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadgen
+spec:
+  replicas: 4
+  selector: {matchLabels: {app: loadgen}}
+  template:
+    metadata: {labels: {app: loadgen}}
+    spec:
+      terminationGracePeriodSeconds: 1
+      containers:
+        - name: client
+          image: sim-api:0.1.0
+          imagePullPolicy: Never
+          command: ["sleep", "infinity"]
+          env:
+            - name: POD_NAME
+              valueFrom: {fieldRef: {fieldPath: metadata.name}}
+            - name: POD_IP
+              valueFrom: {fieldRef: {fieldPath: status.podIP}}
+          resources:
+            requests: {cpu: 100m, memory: 64Mi}
+            limits: {cpu: "1", memory: 256Mi}

@@ -1,0 +1,39 @@
+image:
+  repository: sim-api
+  tag: "0.1.0"
+  pullPolicy: Never          # образ загружается в kind через `kind load docker-image`
+replicaCount: 2
+model:
+  version: A
+  # SHA-256 файла /models/model-<version>.json внутри образа; несовпадение — Pod не станет готовым
+  sha256: f99a0b448a959a3f05468d5458af60917615030b6fe8e110f595b15a49d240ac
+warmupSeconds: 20
+probes:
+  # false воспроизводит исходный дефект: startup и readiness смотрят на /health,
+  # который отвечает 200, как только поднялся HTTP, до конца прогрева.
+  fixed: true
+backend:
+  maxConcurrency: 2
+  maxQueue: 32
+  chunkDelay: 0.05
+  defaultChunks: 6
+  maxChunks: 1024
+  prefixCacheSize: 16
+  cacheHitCost: 0.25
+  cacheMissCost: 0.6
+  coldPenalty: 2.0
+drainSeconds: 5
+gracefulSeconds: 45
+terminationGracePeriodSeconds: 60
+resources:
+  requests: {cpu: 200m, memory: 128Mi}
+  limits: {cpu: "1", memory: 256Mi}
+service:
+  port: 8000
+  affinityTimeoutSeconds: 10800
+hpa:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 3
+  cpuUtilization: 60
+  scaleDownStabilizationSeconds: 60

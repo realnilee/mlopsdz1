@@ -1,0 +1,13 @@
+{
+  "start_at": 1794937395.2132885,
+  "rows": 246,
+  "outcomes": {
+    "ok": 234,
+    "aborted": 1,
+    "rejected": 11
+  },
+  "cold_served": 0,
+  "versions": [
+    "A"
+  ]
+}

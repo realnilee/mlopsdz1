@@ -1,0 +1,23 @@
+test_1_new_pod_gets_no_traffic_before_warmup (tests.test_k8s.K8sTests) ... FAIL
+C:\Users\shish\AppData\Local\Programs\Python\Python310\lib\unittest\case.py:613: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='UTF-8'>
+  outcome.errors.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+======================================================================
+FAIL: test_1_new_pod_gets_no_traffic_before_warmup (tests.test_k8s.K8sTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\shish\Desktop\mlops дз\дз11\hw11\tests\test_k8s.py", line 67, in test_1_new_pod_gets_no_traffic_before_warmup
+    self.assertEqual(cold, [], f'{len(cold)} запросов обслужены непрогретым Pod')
+AssertionError: Lists differ: [{'request_id': 'test1-0-a0-91748b', 'sent[42122 chars]281}] != []
+
+First list contains 55 additional elements.
+First extra element 0:
+{'request_id': 'test1-0-a0-91748b', 'sent_wall': 1794940391.3078947, 'outcome': 'ok', 'status': 200, 'pod': 'sim-6475499fdf-fgfz4', 'version': 'A', 'warm': False, 'chunks': 6, 'tokens': 6, 'ttfc_s': 2.6604506750009023, 'total_s': 2.9126540620054584, 'queue_s': 0.0006796730012865737, 'cache': 'miss', 'error': None, 'echo': [], 'first_wall': 1794940393.9683523, 'done_wall': 1794940394.2205553, 'chunk_times': [2.6605, 2.7108, 2.7613, 2.8116, 2.8621, 2.9124], 'run': 'test1', 'seq': 0, 'logical_id': 'test1-0', 'attempt': 0, 'client': 0, 'session_id': 'c0-s12', 'phase': 'measure', 'planned_wall': 1794940391.3073804, 'prefix_len': 2000, 'max_new_tokens': 6, 'client_pod': 'loadgen-6cc5bb4c56-psv69', 'client_ip': '10.244.0.84', 'send_lag_s': 0.0005142688751220703}
+
+Diff is 48939 characters long. Set self.maxDiff to None to see it. : 55 запросов обслужены непрогретым Pod
+
+----------------------------------------------------------------------
+Ran 1 test in 69.084s
+
+FAILED (failures=1)

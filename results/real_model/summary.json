@@ -1,0 +1,59 @@
+{
+  "model_load_and_warmup_s": 11.958520099986345,
+  "gpu": "NVIDIA GeForce RTX 4060 Ti, 2862 MiB, 8188 MiB, 610.88",
+  "info": {
+    "pod": "realnilee_PC",
+    "version": "my-qwen-adapter-v2",
+    "model_sha256": "ffd3e3c89fdf8988e290811aad1301f20042f2ef10fa990e7a7db1b1bc7e7fe7",
+    "backend_mode": "transformers",
+    "warm": true,
+    "artifact": "C:\\Users\\shish\\Desktop\\mlops дз\\дз 8-9-10\\hw8910-broken\\.release-run\\artifact\\adapter",
+    "uptime": 11.14000000001397,
+    "config": {
+      "backend": "transformers",
+      "model_dir": "/models",
+      "adapter_dir": "C:\\Users\\shish\\Desktop\\mlops дз\\дз 8-9-10\\hw8910-broken\\.release-run\\artifact\\adapter",
+      "model_version": "my-qwen-adapter-v2",
+      "model_sha256": "ffd3e3c89fdf8988e290811aad1301f20042f2ef10fa990e7a7db1b1bc7e7fe7",
+      "warmup": 20.0,
+      "max_concurrency": 1,
+      "max_queue": 32,
+      "chunk_delay": 0.05,
+      "default_chunks": 6,
+      "max_chunks": 24,
+      "cache_size": 16,
+      "hit_cost": 0.25,
+      "miss_cost": 0.6,
+      "cold_penalty": 2.0,
+      "drain_seconds": 5.0
+    }
+  },
+  "limit_tokens": 24,
+  "requests": 8,
+  "per_concurrency": {
+    "1": {
+      "ok": 8,
+      "errors": 0,
+      "batch_seconds": 5.687206799979322,
+      "output_tokens": 75,
+      "tokens_per_second": 13.187493023864139,
+      "ttft_mean_s": 0.07823162496788427,
+      "ttft_max_s": 0.08986169996205717,
+      "tpot_mean_s": 0.0759996700310559,
+      "tpot_n": 8,
+      "queue_mean_s": 0.0
+    },
+    "2": {
+      "ok": 8,
+      "errors": 0,
+      "batch_seconds": 5.422811900032684,
+      "output_tokens": 75,
+      "tokens_per_second": 13.830463121825774,
+      "ttft_mean_s": 0.5844344999932218,
+      "ttft_max_s": 1.7836152999661863,
+      "tpot_mean_s": 0.07172317330917874,
+      "tpot_n": 8,
+      "queue_mean_s": 0.5038749999948777
+    }
+  }
+}

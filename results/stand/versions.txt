@@ -1,0 +1,49 @@
+## kind
+kind v0.33.0 go1.26.7 windows/amd64
+## kubectl/server
+Client Version: v1.36.1
+Kustomize Version: v5.8.1
+Server Version: v1.37.0
+## helm
+v4.3.2+g8346aaa
+## docker
+client 29.9.2 server 29.9.2
+CPUs=16 MemTotal=16691093504 OS=Docker Desktop Kernel=6.18.58.1-microsoft-standard-WSL2
+## node
+{"architecture":"amd64","bootID":"a8510717-8efd-4929-8408-f04db925bfa2","containerRuntimeVersion":"containerd://2.3.4","kernelVersion":"6.18.58.1-microsoft-standard-WSL2","kubeProxyVersion":"","kubeletVersion":"v1.37.0","machineID":"d1808117e5d8435b8ba72c80309c6d17","operatingSystem":"linux","osImage":"Debian GNU/Linux 13 (trixie)","runningInUserNamespace":false,"swap":{"capacity":4294967296},"systemUUID":"d1808117e5d8435b8ba72c80309c6d17"}
+{"cpu":"16","ephemeral-storage":"1081101176832","hugepages-1Gi":"0","hugepages-2Mi":"0","memory":"16299896Ki","pods":"110"}
+## images on node
+docker.io/grafana/grafana                               11.4.0               c0b69935a2469       133MB
+docker.io/kindest/kindnetd                              v20260820-69b56db7   4626fe10df5b9       39.7MB
+docker.io/kindest/local-path-helper                     v20260131-7181c60a   19aa6a21b42cb       2.87MB
+docker.io/kindest/local-path-provisioner                v20260820-69b56db7   c82008e2cd018       15.9MB
+docker.io/library/sim-api                               0.1.0                6fa54d7934870       48.9MB
+docker.io/prom/prometheus                               v3.1.0               b03768b531a2b       117MB
+registry.k8s.io/kube-state-metrics/kube-state-metrics   v2.13.0              3fa5d2250a2f1       14.4MB
+registry.k8s.io/metrics-server/metrics-server           v0.7.2               48d9cfaaf3904       19.5MB
+## sim image
+sha256:64eed50236b9fdb97ba63c8c1c2d7f334f0879bc129fa3329e324ec1e2ecd0fc 202249929
+annotated-doc==0.0.6
+annotated-types==0.8.0
+anyio==4.16.0
+click==8.5.1
+fastapi==0.150.0
+h11==0.16.0
+idna==3.20
+opentelemetry-api==1.45.2
+prometheus_client==0.26.0
+pydantic==2.14.3
+pydantic_core==2.50.4
+starlette==1.10.0
+typing-inspection==0.4.5
+typing_extensions==4.16.0
+uvicorn==0.54.0
+## node container size
+hw11-control-plane 3.9MB (virtual 959MB)
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          9         5         4.31GB    781.9MB (18%)
+Containers      5         3         5.845MB   1.921MB (32%)
+Local Volumes   5         5         2.686GB   0B (0%)
+Build Cache     45        0         3.612GB   1.625GB
+## host disk
+C:              931G  863G   68G  93% /c

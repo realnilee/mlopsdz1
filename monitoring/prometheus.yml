@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+rule_files: [/etc/prometheus/rules.yml]
+scrape_configs:
+  # Каждый Pod с аннотацией prometheus.io/scrape находится через Kubernetes discovery.
+  - job_name: pods
+    kubernetes_sd_configs: [{role: pod}]
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: "true"
+      - source_labels: [__meta_kubernetes_pod_ip, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        regex: (.+);(.+)
+        replacement: $1:$2
+        target_label: __address__
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+        regex: (.+)
+        target_label: __metrics_path__
+      - source_labels: [__meta_kubernetes_pod_name]
+        target_label: pod
+      - source_labels: [__meta_kubernetes_pod_label_model_version]
+        target_label: model_version
+  - job_name: kube-state-metrics
+    static_configs: [{targets: ['kube-state-metrics.monitoring.svc:8080']}]
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: kube_deployment_.*|kube_pod_status_ready|kube_horizontalpodautoscaler_.*|kube_endpoint_.*
+        action: keep

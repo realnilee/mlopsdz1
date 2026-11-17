@@ -1,0 +1,19 @@
+# Два Service над одними и теми же Pod: обычный и с привязкой по IP клиента.
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  selector: {app: sim-api}
+  ports: [{name: http, port: {{ .Values.service.port }}, targetPort: http}]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-affinity
+spec:
+  selector: {app: sim-api}
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP: {timeoutSeconds: {{ .Values.service.affinityTimeoutSeconds }}}
+  ports: [{name: http, port: {{ .Values.service.port }}, targetPort: http}]

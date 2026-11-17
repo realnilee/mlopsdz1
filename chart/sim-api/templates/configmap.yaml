@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  BACKEND: simulated
+  WARMUP_SECONDS: {{ .Values.warmupSeconds | quote }}
+  MAX_CONCURRENCY: {{ .Values.backend.maxConcurrency | quote }}
+  MAX_QUEUE: {{ .Values.backend.maxQueue | quote }}
+  CHUNK_DELAY: {{ .Values.backend.chunkDelay | quote }}
+  DEFAULT_CHUNKS: {{ .Values.backend.defaultChunks | quote }}
+  MAX_CHUNKS: {{ .Values.backend.maxChunks | quote }}
+  PREFIX_CACHE_SIZE: {{ .Values.backend.prefixCacheSize | quote }}
+  CACHE_HIT_COST: {{ .Values.backend.cacheHitCost | quote }}
+  CACHE_MISS_COST: {{ .Values.backend.cacheMissCost | quote }}
+  COLD_PENALTY: {{ .Values.backend.coldPenalty | quote }}
+  DRAIN_SECONDS: {{ .Values.drainSeconds | quote }}
+  GRACEFUL_SECONDS: {{ .Values.gracefulSeconds | quote }}

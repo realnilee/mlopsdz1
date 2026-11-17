@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels: {app: sim-api}
+spec:
+  {{- if not .Values.hpa.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  progressDeadlineSeconds: 90
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: {maxSurge: 1, maxUnavailable: 0}
+  selector:
+    matchLabels: {app: sim-api}
+  template:
+    metadata:
+      labels: {app: sim-api, model-version: {{ .Values.model.version | quote }}}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: /metrics
+    spec:
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
+      containers:
+        - name: api
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports: [{name: http, containerPort: 8000}]
+          envFrom: [{configMapRef: {name: {{ .Release.Name }}-config}}]
+          env:
+            - {name: MODEL_VERSION, value: {{ .Values.model.version | quote }}}
+            - {name: MODEL_SHA256, value: {{ .Values.model.sha256 | quote }}}
+            - name: POD_NAME
+              valueFrom: {fieldRef: {fieldPath: metadata.name}}
+            - name: POD_IP
+              valueFrom: {fieldRef: {fieldPath: status.podIP}}
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          lifecycle:
+            preStop:
+              httpGet: {path: /drain, port: http}
+          {{- if .Values.probes.fixed }}
+          # startup: прогрев закончен; до этого liveness и readiness не выполняются.
+          startupProbe:
+            httpGet: {path: /startup, port: http}
+            periodSeconds: 2
+            failureThreshold: {{ add 15 (div .Values.warmupSeconds 2) }}
+            timeoutSeconds: 2
+          # readiness: можно направлять рабочий трафик (прогрет и не завершается).
+          readinessProbe:
+            httpGet: {path: /ready, port: http}
+            periodSeconds: 2
+            failureThreshold: 1
+            timeoutSeconds: 2
+          # liveness: процесс не завис; не зависит от прогрева и очереди.
+          livenessProbe:
+            httpGet: {path: /live, port: http}
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 2
+          {{- else }}
+          # ДЕФЕКТ: все проверки смотрят на /health, готовность наступает до конца прогрева.
+          startupProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 2
+            failureThreshold: 15
+          readinessProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 2
+          livenessProbe:
+            httpGet: {path: /health, port: http}
+            periodSeconds: 5
+          {{- end }}

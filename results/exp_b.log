@@ -1,0 +1,13 @@
+20:45:10 helm upgrade --install -> Release "sim" has been upgraded. Happy Helming!
+20:47:55 uniform-affinity-r1 по Pod: {'sim-546fb9d66f-drgpg': 326, 'sim-546fb9d66f-7kqq9': 110} исходы: {'ok': 460}
+20:50:27 uniform-plain-r1 по Pod: {'sim-546fb9d66f-drgpg': 215, 'sim-546fb9d66f-7kqq9': 221} исходы: {'ok': 460}
+20:52:55 hot80-affinity-r1 по Pod: {'sim-546fb9d66f-drgpg': 366, 'sim-546fb9d66f-7kqq9': 53} исходы: {'ok': 446}
+20:55:25 hot80-plain-r1 по Pod: {'sim-546fb9d66f-7kqq9': 221, 'sim-546fb9d66f-drgpg': 198} исходы: {'ok': 446}
+20:58:02 uniform-affinity-r2 по Pod: {'sim-546fb9d66f-drgpg': 326, 'sim-546fb9d66f-7kqq9': 110} исходы: {'ok': 452, 'rejected': 8}
+21:00:29 uniform-plain-r2 по Pod: {'sim-546fb9d66f-drgpg': 224, 'sim-546fb9d66f-7kqq9': 212} исходы: {'ok': 460}
+21:03:04 hot80-affinity-r2 по Pod: {'sim-546fb9d66f-7kqq9': 419} исходы: {'ok': 407, 'rejected': 39}
+21:05:29 hot80-plain-r2 по Pod: {'sim-546fb9d66f-drgpg': 213, 'sim-546fb9d66f-7kqq9': 206} исходы: {'ok': 446}
+21:07:53 uniform-affinity-r3 по Pod: {'sim-546fb9d66f-drgpg': 216, 'sim-546fb9d66f-7kqq9': 220} исходы: {'ok': 460}
+21:10:19 uniform-plain-r3 по Pod: {'sim-546fb9d66f-7kqq9': 224, 'sim-546fb9d66f-drgpg': 212} исходы: {'ok': 460}
+21:12:44 hot80-affinity-r3 по Pod: {'sim-546fb9d66f-7kqq9': 366, 'sim-546fb9d66f-drgpg': 53} исходы: {'ok': 446}
+21:15:09 hot80-plain-r3 по Pod: {'sim-546fb9d66f-drgpg': 209, 'sim-546fb9d66f-7kqq9': 210} исходы: {'ok': 446}

@@ -1,0 +1,6 @@
+NAME                     SERVICE                      AVAILABLE   AGE
+v1beta1.metrics.k8s.io   kube-system/metrics-server   True        57m
+
+NAME                   CPU(cores)   MEMORY(bytes)   
+sim-546fb9d66f-8hxl6   3m           37Mi            
+sim-546fb9d66f-drgpg   3m           38Mi            

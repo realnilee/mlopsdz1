@@ -1,0 +1,31 @@
+{
+  "run": "uniform-affinity-r1",
+  "start_at": 1794937530.2583966,
+  "measure_from": 1794937540.2583966,
+  "measure_to": 1794937660.2583966,
+  "clients": [
+    {
+      "pod": "loadgen-74999c4dc-ldf9b",
+      "ip": "10.244.0.28"
+    },
+    {
+      "pod": "loadgen-74999c4dc-mjnsp",
+      "ip": "10.244.0.31"
+    },
+    {
+      "pod": "loadgen-74999c4dc-qwlrq",
+      "ip": "10.244.0.29"
+    },
+    {
+      "pod": "loadgen-74999c4dc-wmp5g",
+      "ip": "10.244.0.30"
+    }
+  ],
+  "servers": {
+    "sim-546fb9d66f-7kqq9": "10.244.0.26",
+    "sim-546fb9d66f-drgpg": "10.244.0.27"
+  },
+  "cache_state": "сброшен перед прогоном, затем 10 с прогрева без учёта",
+  "scheduled": 460,
+  "rows": 460
+}
