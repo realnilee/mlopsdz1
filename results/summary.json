@@ -4534,6 +4534,216 @@
     1794939162.2541924
    ]
   },
+  "hot80-cacheaware-r1": {
+   "traffic": "hot80",
+   "policy": "cacheaware",
+   "rep": 1,
+   "stats": {
+    "scheduled": 419,
+    "sent": 419,
+    "attempts": 419,
+    "completed": 419,
+    "rejected": 0,
+    "aborted": 0,
+    "timeout": 0,
+    "http_5xx": 0,
+    "connect_error": 0,
+    "error_share": 0.0,
+    "n_ok": 419,
+    "ttfc_p50": 0.3345,
+    "ttfc_p95": 0.7283,
+    "total_p50": 0.6108,
+    "total_p95": 1.0176,
+    "send_lag_p50": 0.0004,
+    "send_lag_max": 0.0007
+   },
+   "per_pod": {
+    "sim-546fb9d66f-h5js9": {
+     "requests": 206,
+     "share": 0.492,
+     "queue_mean": 0.0365,
+     "queue_p95": 0.25060262824990787,
+     "ttfc_p50": 0.3265002454936621,
+     "ttfc_p95": 0.7167034327394504,
+     "hit_ratio": 0.8155,
+     "rejected": 0
+    },
+    "sim-546fb9d66f-pdmh9": {
+     "requests": 213,
+     "share": 0.508,
+     "queue_mean": 0.0519,
+     "queue_p95": 0.3353332392027365,
+     "ttfc_p50": 0.3400585380004486,
+     "ttfc_p95": 0.740935841601458,
+     "hit_ratio": 0.8638,
+     "rejected": 0
+    }
+   },
+   "max_pod_share": 0.508,
+   "client_to_pod": {
+    "c0 10.244.0.104": {
+     "sim-546fb9d66f-h5js9": 161,
+     "sim-546fb9d66f-pdmh9": 177
+    },
+    "c1 10.244.0.105": {
+     "sim-546fb9d66f-pdmh9": 9,
+     "sim-546fb9d66f-h5js9": 10
+    },
+    "c2 10.244.0.103": {
+     "sim-546fb9d66f-h5js9": 14,
+     "sim-546fb9d66f-pdmh9": 14
+    },
+    "c3 10.244.0.106": {
+     "sim-546fb9d66f-h5js9": 21,
+     "sim-546fb9d66f-pdmh9": 13
+    }
+   },
+   "hit_ratio": 0.8401,
+   "window": [
+    1794943573.2550576,
+    1794943693.2550576
+   ]
+  },
+  "hot80-cacheaware-r2": {
+   "traffic": "hot80",
+   "policy": "cacheaware",
+   "rep": 2,
+   "stats": {
+    "scheduled": 419,
+    "sent": 419,
+    "attempts": 419,
+    "completed": 419,
+    "rejected": 0,
+    "aborted": 0,
+    "timeout": 0,
+    "http_5xx": 0,
+    "connect_error": 0,
+    "error_share": 0.0,
+    "n_ok": 419,
+    "ttfc_p50": 0.3287,
+    "ttfc_p95": 0.7521,
+    "total_p50": 0.6061,
+    "total_p95": 1.0219,
+    "send_lag_p50": 0.0005,
+    "send_lag_max": 0.0009
+   },
+   "per_pod": {
+    "sim-546fb9d66f-h5js9": {
+     "requests": 213,
+     "share": 0.508,
+     "queue_mean": 0.044,
+     "queue_p95": 0.3005288367974569,
+     "ttfc_p50": 0.3286292209959356,
+     "ttfc_p95": 0.7490787773946066,
+     "hit_ratio": 0.8779,
+     "rejected": 0
+    },
+    "sim-546fb9d66f-pdmh9": {
+     "requests": 206,
+     "share": 0.492,
+     "queue_mean": 0.0466,
+     "queue_p95": 0.35746339849356445,
+     "ttfc_p50": 0.32893432450509863,
+     "ttfc_p95": 0.7544060219988751,
+     "hit_ratio": 0.8544,
+     "rejected": 0
+    }
+   },
+   "max_pod_share": 0.508,
+   "client_to_pod": {
+    "c0 10.244.0.112": {
+     "sim-546fb9d66f-pdmh9": 163,
+     "sim-546fb9d66f-h5js9": 175
+    },
+    "c1 10.244.0.111": {
+     "sim-546fb9d66f-h5js9": 9,
+     "sim-546fb9d66f-pdmh9": 10
+    },
+    "c2 10.244.0.113": {
+     "sim-546fb9d66f-h5js9": 11,
+     "sim-546fb9d66f-pdmh9": 17
+    },
+    "c3 10.244.0.114": {
+     "sim-546fb9d66f-h5js9": 18,
+     "sim-546fb9d66f-pdmh9": 16
+    }
+   },
+   "hit_ratio": 0.8663,
+   "window": [
+    1794943863.1292908,
+    1794943983.1292908
+   ]
+  },
+  "hot80-cacheaware-r3": {
+   "traffic": "hot80",
+   "policy": "cacheaware",
+   "rep": 3,
+   "stats": {
+    "scheduled": 419,
+    "sent": 419,
+    "attempts": 419,
+    "completed": 419,
+    "rejected": 0,
+    "aborted": 0,
+    "timeout": 0,
+    "http_5xx": 0,
+    "connect_error": 0,
+    "error_share": 0.0,
+    "n_ok": 419,
+    "ttfc_p50": 0.3404,
+    "ttfc_p95": 0.7662,
+    "total_p50": 0.6134,
+    "total_p95": 1.0394,
+    "send_lag_p50": 0.0004,
+    "send_lag_max": 0.0007
+   },
+   "per_pod": {
+    "sim-546fb9d66f-h5js9": {
+     "requests": 215,
+     "share": 0.513,
+     "queue_mean": 0.0545,
+     "queue_p95": 0.3159656525022,
+     "ttfc_p50": 0.333529475989053,
+     "ttfc_p95": 0.736343868999392,
+     "hit_ratio": 0.8744,
+     "rejected": 0
+    },
+    "sim-546fb9d66f-pdmh9": {
+     "requests": 204,
+     "share": 0.487,
+     "queue_mean": 0.0435,
+     "queue_p95": 0.33470058290113214,
+     "ttfc_p50": 0.3408662994988845,
+     "ttfc_p95": 0.7787808333036081,
+     "hit_ratio": 0.8088,
+     "rejected": 0
+    }
+   },
+   "max_pod_share": 0.513,
+   "client_to_pod": {
+    "c0 10.244.0.122": {
+     "sim-546fb9d66f-h5js9": 174,
+     "sim-546fb9d66f-pdmh9": 164
+    },
+    "c1 10.244.0.121": {
+     "sim-546fb9d66f-h5js9": 9,
+     "sim-546fb9d66f-pdmh9": 10
+    },
+    "c2 10.244.0.120": {
+     "sim-546fb9d66f-h5js9": 15,
+     "sim-546fb9d66f-pdmh9": 13
+    },
+    "c3 10.244.0.119": {
+     "sim-546fb9d66f-pdmh9": 17,
+     "sim-546fb9d66f-h5js9": 17
+    }
+   },
+   "hit_ratio": 0.8425,
+   "window": [
+    1794944152.419035,
+    1794944272.419035
+   ]
+  },
   "hot80-plain-r1": {
    "traffic": "hot80",
    "policy": "plain",
@@ -4940,6 +5150,216 @@
    "window": [
     1794938751.1994805,
     1794938871.1994805
+   ]
+  },
+  "uniform-cacheaware-r1": {
+   "traffic": "uniform",
+   "policy": "cacheaware",
+   "rep": 1,
+   "stats": {
+    "scheduled": 436,
+    "sent": 436,
+    "attempts": 436,
+    "completed": 436,
+    "rejected": 0,
+    "aborted": 0,
+    "timeout": 0,
+    "http_5xx": 0,
+    "connect_error": 0,
+    "error_share": 0.0,
+    "n_ok": 436,
+    "ttfc_p50": 0.6583,
+    "ttfc_p95": 1.2914,
+    "total_p50": 0.9411,
+    "total_p95": 1.5896,
+    "send_lag_p50": 0.0004,
+    "send_lag_max": 0.0009
+   },
+   "per_pod": {
+    "sim-546fb9d66f-h5js9": {
+     "requests": 210,
+     "share": 0.482,
+     "queue_mean": 0.1511,
+     "queue_p95": 0.6322202538525744,
+     "ttfc_p50": 0.6550021310031298,
+     "ttfc_p95": 1.3558763755994725,
+     "hit_ratio": 0.519,
+     "rejected": 0
+    },
+    "sim-546fb9d66f-pdmh9": {
+     "requests": 226,
+     "share": 0.518,
+     "queue_mean": 0.1473,
+     "queue_p95": 0.6861399607514613,
+     "ttfc_p50": 0.6591413880014443,
+     "ttfc_p95": 1.2458974219989614,
+     "hit_ratio": 0.5221,
+     "rejected": 0
+    }
+   },
+   "max_pod_share": 0.518,
+   "client_to_pod": {
+    "c0 10.244.0.99": {
+     "sim-546fb9d66f-h5js9": 51,
+     "sim-546fb9d66f-pdmh9": 52
+    },
+    "c1 10.244.0.100": {
+     "sim-546fb9d66f-pdmh9": 51,
+     "sim-546fb9d66f-h5js9": 59
+    },
+    "c2 10.244.0.102": {
+     "sim-546fb9d66f-h5js9": 56,
+     "sim-546fb9d66f-pdmh9": 57
+    },
+    "c3 10.244.0.101": {
+     "sim-546fb9d66f-h5js9": 44,
+     "sim-546fb9d66f-pdmh9": 66
+    }
+   },
+   "hit_ratio": 0.5206,
+   "window": [
+    1794943427.5976818,
+    1794943547.5976818
+   ]
+  },
+  "uniform-cacheaware-r2": {
+   "traffic": "uniform",
+   "policy": "cacheaware",
+   "rep": 2,
+   "stats": {
+    "scheduled": 436,
+    "sent": 436,
+    "attempts": 436,
+    "completed": 436,
+    "rejected": 0,
+    "aborted": 0,
+    "timeout": 0,
+    "http_5xx": 0,
+    "connect_error": 0,
+    "error_share": 0.0,
+    "n_ok": 436,
+    "ttfc_p50": 0.6541,
+    "ttfc_p95": 1.2231,
+    "total_p50": 0.9094,
+    "total_p95": 1.5239,
+    "send_lag_p50": 0.0005,
+    "send_lag_max": 0.0038
+   },
+   "per_pod": {
+    "sim-546fb9d66f-h5js9": {
+     "requests": 221,
+     "share": 0.507,
+     "queue_mean": 0.1398,
+     "queue_p95": 0.6117740790068638,
+     "ttfc_p50": 0.6542045639944263,
+     "ttfc_p95": 1.2185696279921103,
+     "hit_ratio": 0.6018,
+     "rejected": 0
+    },
+    "sim-546fb9d66f-pdmh9": {
+     "requests": 215,
+     "share": 0.493,
+     "queue_mean": 0.1298,
+     "queue_p95": 0.627830885899311,
+     "ttfc_p50": 0.6539111549936933,
+     "ttfc_p95": 1.2169771154047329,
+     "hit_ratio": 0.5674,
+     "rejected": 0
+    }
+   },
+   "max_pod_share": 0.507,
+   "client_to_pod": {
+    "c0 10.244.0.108": {
+     "sim-546fb9d66f-pdmh9": 35,
+     "sim-546fb9d66f-h5js9": 68
+    },
+    "c1 10.244.0.107": {
+     "sim-546fb9d66f-pdmh9": 62,
+     "sim-546fb9d66f-h5js9": 48
+    },
+    "c2 10.244.0.110": {
+     "sim-546fb9d66f-h5js9": 50,
+     "sim-546fb9d66f-pdmh9": 63
+    },
+    "c3 10.244.0.109": {
+     "sim-546fb9d66f-h5js9": 55,
+     "sim-546fb9d66f-pdmh9": 55
+    }
+   },
+   "hit_ratio": 0.5849,
+   "window": [
+    1794943718.536883,
+    1794943838.536883
+   ]
+  },
+  "uniform-cacheaware-r3": {
+   "traffic": "uniform",
+   "policy": "cacheaware",
+   "rep": 3,
+   "stats": {
+    "scheduled": 436,
+    "sent": 436,
+    "attempts": 436,
+    "completed": 436,
+    "rejected": 0,
+    "aborted": 0,
+    "timeout": 0,
+    "http_5xx": 0,
+    "connect_error": 0,
+    "error_share": 0.0,
+    "n_ok": 436,
+    "ttfc_p50": 0.6641,
+    "ttfc_p95": 1.5729,
+    "total_p50": 0.9492,
+    "total_p95": 1.8555,
+    "send_lag_p50": 0.0004,
+    "send_lag_max": 0.0007
+   },
+   "per_pod": {
+    "sim-546fb9d66f-h5js9": {
+     "requests": 215,
+     "share": 0.493,
+     "queue_mean": 0.201,
+     "queue_p95": 1.0300886343044102,
+     "ttfc_p50": 0.6679412520024925,
+     "ttfc_p95": 1.6637437307988874,
+     "hit_ratio": 0.4744,
+     "rejected": 0
+    },
+    "sim-546fb9d66f-pdmh9": {
+     "requests": 221,
+     "share": 0.507,
+     "queue_mean": 0.2272,
+     "queue_p95": 1.0280916199990315,
+     "ttfc_p50": 0.6554788009962067,
+     "ttfc_p95": 1.5046117669990053,
+     "hit_ratio": 0.5566,
+     "rejected": 0
+    }
+   },
+   "max_pod_share": 0.507,
+   "client_to_pod": {
+    "c0 10.244.0.118": {
+     "sim-546fb9d66f-h5js9": 58,
+     "sim-546fb9d66f-pdmh9": 45
+    },
+    "c1 10.244.0.115": {
+     "sim-546fb9d66f-h5js9": 44,
+     "sim-546fb9d66f-pdmh9": 66
+    },
+    "c2 10.244.0.116": {
+     "sim-546fb9d66f-h5js9": 50,
+     "sim-546fb9d66f-pdmh9": 63
+    },
+    "c3 10.244.0.117": {
+     "sim-546fb9d66f-h5js9": 63,
+     "sim-546fb9d66f-pdmh9": 47
+    }
+   },
+   "hit_ratio": 0.5161,
+   "window": [
+    1794944007.2437975,
+    1794944127.2437975
    ]
   },
   "uniform-plain-r1": {
@@ -6697,5 +7117,5 @@
    "promql": "histogram_quantile(0.95, sum by (le) (increase(sim_ttfc_seconds_bucket[120s])))"
   }
  ],
- "requests_csv_rows": 7622
+ "requests_csv_rows": 10340
 }

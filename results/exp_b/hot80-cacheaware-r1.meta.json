@@ -1,0 +1,31 @@
+{
+  "run": "hot80-cacheaware-r1",
+  "start_at": 1794943563.2550576,
+  "measure_from": 1794943573.2550576,
+  "measure_to": 1794943693.2550576,
+  "clients": [
+    {
+      "pod": "loadgen-7db7f76f4f-5plk9",
+      "ip": "10.244.0.104"
+    },
+    {
+      "pod": "loadgen-7db7f76f4f-clsxv",
+      "ip": "10.244.0.105"
+    },
+    {
+      "pod": "loadgen-7db7f76f4f-gvbx9",
+      "ip": "10.244.0.103"
+    },
+    {
+      "pod": "loadgen-7db7f76f4f-lwqpz",
+      "ip": "10.244.0.106"
+    }
+  ],
+  "servers": {
+    "sim-546fb9d66f-h5js9": "10.244.0.97",
+    "sim-546fb9d66f-pdmh9": "10.244.0.96"
+  },
+  "cache_state": "сброшен перед прогоном, затем 10 с прогрева без учёта",
+  "scheduled": 446,
+  "rows": 446
+}

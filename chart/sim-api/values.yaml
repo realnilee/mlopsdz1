@@ -31,6 +31,10 @@ resources:
 service:
   port: 8000
   affinityTimeoutSeconds: 10800
+router:
+  # Третья политика опыта B: cache-aware маршрутизация с учётом очереди.
+  enabled: true
+  image: {repository: sim-api, tag: "0.1.1"}
 hpa:
   enabled: false
   minReplicas: 2

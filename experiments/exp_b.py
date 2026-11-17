@@ -4,6 +4,7 @@
 (новые IP, чистая привязка) и сброс префиксного кеша. Фаза прогрева 10 с, замер 120 с.
 """
 import itertools
+import os
 import json
 import sys
 import time
@@ -13,7 +14,10 @@ from kube import (RESULTS, clients, collect, deploy, fresh_clients, kjson, kubec
 
 OUT = RESULTS / 'exp_b'
 RATE, MEASURE, WARM = 3.5, 120, 10
-POLICIES = {'affinity': 'http://sim-affinity:8000/generate', 'plain': 'http://sim:8000/generate'}
+POLICIES = {'affinity': 'http://sim-affinity:8000/generate', 'plain': 'http://sim:8000/generate',
+            'cacheaware': 'http://sim-router:8000/generate'}
+# HW11_POLICIES=cacheaware — догнать только выбранные политики, не перезапуская остальные.
+SELECTED = [p for p in os.environ.get('HW11_POLICIES', ','.join(POLICIES)).split(',') if p]
 TRAFFIC = {'uniform': None, 'hot80': 0.8}
 
 
@@ -72,5 +76,5 @@ if __name__ == '__main__':
     for traffic in TRAFFIC:
         (OUT / f'schedule-{traffic}.json').write_text(json.dumps(schedule(traffic)), encoding='utf-8')
     reps = [int(x) for x in sys.argv[1:]] or [1, 2, 3]
-    for rep, traffic, policy in itertools.product(reps, TRAFFIC, POLICIES):
+    for rep, traffic, policy in itertools.product(reps, TRAFFIC, SELECTED):
         run(rep, traffic, policy)

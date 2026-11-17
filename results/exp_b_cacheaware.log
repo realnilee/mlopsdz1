@@ -1,0 +1,7 @@
+22:23:23 helm upgrade --install -> Release "sim" has been upgraded. Happy Helming!
+22:25:49 uniform-cacheaware-r1 по Pod: {'sim-546fb9d66f-h5js9': 210, 'sim-546fb9d66f-pdmh9': 226} исходы: {'ok': 460}
+22:28:15 hot80-cacheaware-r1 по Pod: {'sim-546fb9d66f-h5js9': 206, 'sim-546fb9d66f-pdmh9': 213} исходы: {'ok': 446}
+22:30:40 uniform-cacheaware-r2 по Pod: {'sim-546fb9d66f-pdmh9': 215, 'sim-546fb9d66f-h5js9': 221} исходы: {'ok': 460}
+22:33:04 hot80-cacheaware-r2 по Pod: {'sim-546fb9d66f-pdmh9': 206, 'sim-546fb9d66f-h5js9': 213} исходы: {'ok': 446}
+22:35:29 uniform-cacheaware-r3 по Pod: {'sim-546fb9d66f-h5js9': 215, 'sim-546fb9d66f-pdmh9': 221} исходы: {'ok': 460}
+22:37:57 hot80-cacheaware-r3 по Pod: {'sim-546fb9d66f-h5js9': 215, 'sim-546fb9d66f-pdmh9': 204} исходы: {'ok': 446}

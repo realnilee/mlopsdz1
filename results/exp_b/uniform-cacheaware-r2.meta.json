@@ -1,0 +1,31 @@
+{
+  "run": "uniform-cacheaware-r2",
+  "start_at": 1794943708.536883,
+  "measure_from": 1794943718.536883,
+  "measure_to": 1794943838.536883,
+  "clients": [
+    {
+      "pod": "loadgen-8646db675-6md22",
+      "ip": "10.244.0.108"
+    },
+    {
+      "pod": "loadgen-8646db675-9mrvz",
+      "ip": "10.244.0.107"
+    },
+    {
+      "pod": "loadgen-8646db675-cbggw",
+      "ip": "10.244.0.110"
+    },
+    {
+      "pod": "loadgen-8646db675-vwc4g",
+      "ip": "10.244.0.109"
+    }
+  ],
+  "servers": {
+    "sim-546fb9d66f-h5js9": "10.244.0.97",
+    "sim-546fb9d66f-pdmh9": "10.244.0.96"
+  },
+  "cache_state": "сброшен перед прогоном, затем 10 с прогрева без учёта",
+  "scheduled": 460,
+  "rows": 460
+}

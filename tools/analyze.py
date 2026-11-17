@@ -249,15 +249,15 @@ def figures(a, b, c):
     plt.close(fig)
 
     # 2. Задержка и очередь по Pod: горячая реплика.
-    fig, axes = plt.subplots(2, 2, figsize=(12, 7), sharey='row')
-    for col, policy in enumerate(('affinity', 'plain')):
+    fig, axes = plt.subplots(2, 3, figsize=(16, 7), sharey='row')
+    for col, policy in enumerate(('affinity', 'plain', 'cacheaware')):
         name = f'hot80-{policy}-r1'
         rows = [r for r in load(RES / 'exp_b' / f'{name}.jsonl') if r['phase'] == 'measure' and r['outcome'] == 'ok']
         t0 = min(r['planned_wall'] for r in rows)
         for pod, group in sorted(group_by(rows, 'pod').items()):
             axes[0][col].scatter([r['sent_wall'] - t0 for r in group], [r['ttfc_s'] for r in group], s=6, label=pod[-5:])
             axes[1][col].scatter([r['sent_wall'] - t0 for r in group], [r['queue_s'] for r in group], s=6, label=pod[-5:])
-        axes[0][col].set_title(f'80% через одного клиента, Service: {policy}')
+        axes[0][col].set_title(f'80% через одного клиента, политика: {policy}')
         axes[0][col].set_ylabel('TTFC, с')
         axes[1][col].set_ylabel('ожидание в очереди, с')
         axes[1][col].set_xlabel('с от начала замера')
@@ -267,8 +267,8 @@ def figures(a, b, c):
     plt.close(fig)
 
     # 3. Сравнение политик по трём прогонам.
-    fig, axes = plt.subplots(1, 3, figsize=(13, 4))
-    combos = [(t, p) for t in ('uniform', 'hot80') for p in ('affinity', 'plain')]
+    fig, axes = plt.subplots(1, 3, figsize=(16, 4.5))
+    combos = [(t, p) for t in ('uniform', 'hot80') for p in ('affinity', 'plain', 'cacheaware')]
     for ax, metric, label in ((axes[0], 'ttfc_p95', 'p95 TTFC, с'), (axes[1], 'max_pod_share', 'доля самого загруженного Pod'),
                               (axes[2], 'rejected', 'отказы 429 за замер')):
         for i, (t, p) in enumerate(combos):
@@ -280,7 +280,7 @@ def figures(a, b, c):
             ax.bar(i, sum(vals) / len(vals) if vals else 0, alpha=.4)
         ax.set_xticks(range(len(combos)), [f'{t}\n{p}' for t, p in combos])
         ax.set_title(label)
-    fig.suptitle('Политики Service × трафик, 3 прогона (точки), среднее (столбец); замер 120 с, 3,5 запр/с')
+    fig.suptitle('Политики (ClientIP / обычный Service / cache-aware router) × трафик, 3 прогона (точки), среднее (столбец); замер 120 с, 3,5 запр/с')
     fig.tight_layout()
     fig.savefig(FIG / '3_policy_comparison.png', dpi=110)
     plt.close(fig)

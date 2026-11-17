@@ -13,8 +13,9 @@ CPU, без весов). Короткий опыт с настоящей мод�
 | `app/server.py` | API: `/generate` (поток), `/health`, `/startup`, `/ready`, `/live`, `/info`, `/metrics`, `/drain` |
 | `app/backends.py` | `SimulatedBackend` (прогрев, LRU-кеш префиксов, стоимость hit/miss) и `TransformersBackend` (GPU) |
 | `app/loadgen.py` | генератор нагрузки с расписанием (открытая модель), учёт исходов и повторов |
+| `app/router.py` | третья политика опыта B: cache-aware маршрутизатор с учётом очереди |
 | `Dockerfile`, `requirements.txt` | образ `sim-api:0.1.0`; точные версии внутри образа — `/srv/requirements.lock.txt` |
-| `chart/sim-api/` | Helm-чарт: Deployment, ConfigMap, два Service, HPA |
+| `chart/sim-api/` | Helm-чарт: Deployment, ConfigMap, два Service, HPA, маршрутизатор с headless Service |
 | `k8s/clients.yaml` | 4 клиентских Pod для генератора |
 | `monitoring/` | Prometheus (discovery по Pod), правила тревог, Grafana и экспорт дашборда, metrics-server |
 | `experiments/` | опыты A, B, C |
@@ -46,8 +47,8 @@ kubectl v1.36.1, Helm v4.3.2. Свободно на диске до начала
 ```bash
 . ./env.sh                                    # пути к kubectl, kind, helm
 kind create cluster --config kind.yaml
-docker build -t sim-api:0.1.0 .
-kind load docker-image sim-api:0.1.0 --name hw11
+docker build -t sim-api:0.1.0 -t sim-api:0.1.1 .   # 0.1.1 — тот же образ + router.py для маршрутизатора
+kind load docker-image sim-api:0.1.0 sim-api:0.1.1 --name hw11
 helm upgrade --install sim chart/sim-api --wait
 kubectl apply -f k8s/clients.yaml
 
@@ -70,7 +71,7 @@ kubectl -n monitoring port-forward svc/prometheus 9090:9090 &
 ```bash
 cd experiments
 python exp_a.py                 # прогрев (дефект и исправление), rollout, неготовая B и откат, kill
-python exp_b.py                 # 2 политики × 2 вида трафика × 3 прогона по 120 с (~30 мин)
+python exp_b.py                 # 3 политики × 2 вида трафика × 3 прогона по 120 с (~45 мин)
 python exp_c.py                 # HPA 2→3→2 и тревоги
 cd ..
 python -m unittest tests.test_local -v
@@ -86,7 +87,7 @@ python -m unittest tests.test_k8s -v
 
 ```bash
 kind delete cluster --name hw11        # узел, его том и все Pod
-docker image rm sim-api:0.1.0 kindest/node:v1.37.0
+docker image rm sim-api:0.1.0 sim-api:0.1.1 kindest/node:v1.37.0
 rm -rf .venv                           # окружение для GPU-опыта
 ```
 

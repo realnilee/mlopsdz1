@@ -1,0 +1,53 @@
+{{- if .Values.router.enabled }}
+# Headless Service: DNS отдаёт только Ready-адреса Pod — маршрутизатор не видит непрогретые.
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-headless
+spec:
+  clusterIP: None
+  selector: {app: sim-api}
+  ports: [{name: http, port: {{ .Values.service.port }}, targetPort: http}]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-router
+  labels: {app: sim-router}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: sim-router}
+  template:
+    metadata:
+      labels: {app: sim-router}
+    spec:
+      containers:
+        - name: router
+          image: "{{ .Values.router.image.repository }}:{{ .Values.router.image.tag }}"
+          imagePullPolicy: Never
+          command: ["python", "-m", "app.router"]
+          env:
+            - {name: BACKENDS_HOST, value: "{{ .Release.Name }}-headless"}
+            - {name: MAX_CONCURRENCY, value: {{ .Values.backend.maxConcurrency | quote }}}
+            - {name: CACHE_HIT_COST, value: {{ .Values.backend.cacheHitCost | quote }}}
+            - {name: CACHE_MISS_COST, value: {{ .Values.backend.cacheMissCost | quote }}}
+            - {name: PREFIX_CACHE_SIZE, value: {{ .Values.backend.prefixCacheSize | quote }}}
+            - name: POD_NAME
+              valueFrom: {fieldRef: {fieldPath: metadata.name}}
+          ports: [{name: http, containerPort: 8000}]
+          readinessProbe:
+            httpGet: {path: /ready, port: http}
+            periodSeconds: 2
+          resources:
+            requests: {cpu: 100m, memory: 64Mi}
+            limits: {cpu: "1", memory: 256Mi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-router
+spec:
+  selector: {app: sim-router}
+  ports: [{name: http, port: {{ .Values.service.port }}, targetPort: http}]
+{{- end }}
